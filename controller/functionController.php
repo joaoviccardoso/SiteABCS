@@ -171,7 +171,11 @@ class functionController
         $cssFiles = array(
             "css/bootstrap.min.css",
             "css/fa/css/font-awesome.css",
-            "css/style.css",
+            "css/base.css",
+            "css/layout.css",
+            "css/components.css",
+            "css/produtos.css",
+            "css/hero.css",
         );
         $buffer = "";
         foreach ($cssFiles as $cssFile) {

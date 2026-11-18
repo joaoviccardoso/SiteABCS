@@ -1,0 +1,55 @@
+/* ==========================================================
+   produtos.css — cores e banners de cada produto
+   ========================================================== */
+
+/* ---------- cores ---------- */
+.premium     { color: #076A8B; }
+.mosaico     { color: #8B0748; }
+.citrus      { color: #5B8100; }
+.sat         { color: #FF8400; }
+.sysin       { color: #813B93; }
+.nfe         { color: #663333; }
+.cte         { color: #777777; }
+.mdfe        { color: #18A596; }
+.informatica { color: #000066; }
+
+/* ---------- banners ---------- */
+.back-premium {
+    background-image: url("../img/premium_banner.png");
+    background-position: center center;
+}
+
+.back-citrus {
+    background-image: url("../img/citrus_banner.jpg");
+    background-position: center center;
+}
+
+.back-mosaico {
+    background-image: url("../img/mosaico_banner.png");
+    background-position: center center;
+}
+
+.back-nfe {
+    background-image: url("../img/nfe_banner.png");
+    background-position: center center;
+}
+
+.back-sysin {
+    background-image: url("../img/sysin_banner.png");
+    background-position: center center;
+}
+
+.back-sat {
+    background-image: url("../img/sat_banner.png");
+    background-position: center center;
+}
+
+.back-cte {
+    background-image: url("../img/cte_banner.jpg");
+    background-position: center center;
+}
+
+.back-mdfe {
+    background-image: url("../img/mdfe_banner.jpg");
+    background-position: center center;
+}

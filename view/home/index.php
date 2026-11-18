@@ -1,10 +1,26 @@
 <div id='pagina'>
-    <div id="gradient">
-        <div class="inicio text-center">
-            <img class="brand" src="./img/abcs_branco_grande.png" alt='ABCS Informática: Soluções para Empresas'>
-            <h1 class='subbrand white'>Soluções para a sua Empresa</h1>
+    <section id="gradient" class="hero-background hero">
+        <div class="container">
+            <div class="row hero-row">
+                <div class="col-md-7 hero-content">
+                    <h1 class="hero-title">Soluções completas em tecnologia para sua empresa</h1>
+                    <p class="hero-subtitle">sistemas + suporte + manutenção</p>
+
+                    <div class="hero-cta">
+                        <a href="#solucoes" class="btn-hero btn-hero-primary">Ver soluções</a>
+                        <a href="https://wa.me/55SEUNUMEROAQUI" target="_blank" rel="noopener" class="btn-hero btn-hero-outline">Falar no WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="col-md-5 hero-logo-wrap">
+                    <img class="hero-logo" src="./img/abcs_branco_grande.png" alt="ABCS Informática & Sistemas">
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+
+    <!--
     <div class='container text-center'>
         <div class='row justify-content-lg-center'>
             <div class="col-md-4 card">
@@ -146,9 +162,9 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<script async>
+<!--<script async>
     var colors = new Array(
         [79, 6, 125], [0, 0, 102], [6, 76, 125], [6, 115, 93]);
 
@@ -205,4 +221,4 @@
     }
 
     setInterval(updateGradient, 10);
-</script>
+</script>-->

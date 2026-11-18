@@ -29,6 +29,13 @@ a {
     transition: 0.5s;
 }
 
+.hero-background{
+    background-color: #131B2E;
+    background-image: url("../img/backgroundHero.png");
+    background-size: cover;
+    background-position: 0% 0%;
+}
+
 .icon {
     fill: #ccc;
 }

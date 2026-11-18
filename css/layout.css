@@ -1,0 +1,81 @@
+/* ==========================================================
+   layout.css — estrutura da página: navbar, footer, conteúdo
+   ========================================================== */
+
+/* ---------- navbar ---------- */
+.navbar {
+    border-radius: 0px;
+}
+
+.navbar-inverse {
+    margin-bottom: 0;
+}
+
+.navbar.navbar-inverse {
+    background-color: #000033;
+    border: 0px;
+}
+
+.navbar-brand img {
+    max-width: 100%;
+    width: 110px;
+    margin-top: 0;
+}
+
+.navbar-inverse .navbar-nav>li>a,
+.navbar-brand img {
+    color: white;
+    margin: 5px;
+    transition: 0.5s;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover,
+.navbar-brand img:hover {
+    background-color: #26267F;
+}
+
+/* ---------- conteúdo ---------- */
+.main-content {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+/* ---------- footer ---------- */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #000099;
+    color: white;
+    margin-top: 50px;
+    padding-top: 20px;
+}
+
+/* ---------- responsivo (layout) ---------- */
+.smallitem {
+    display: none;
+}
+
+@media screen and (max-width: 720px) {
+    .smallitem {
+        display: block;
+        margin: 10px;
+        padding: 10px;
+    }
+    .navbar-brand img {
+        width: 70px;
+    }
+    .img {
+        margin-left: 0;
+    }
+}
+
+@media screen and (min-width: 720px) {
+    .row-eq-height {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        padding-top: 30px;
+    }
+}

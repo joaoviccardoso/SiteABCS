@@ -1,0 +1,141 @@
+/* ==========================================================
+   hero.css — seção principal da home
+   ========================================================== */
+
+.hero-background {
+    background-color: #131B2E;
+    background-image: url("../img/backgroundHero.png");
+    background-size: cover;
+    background-position: 0% 0%;
+}
+
+#gradient {
+    padding: 0px;
+    margin: 0px;
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin-bottom: 0;
+}
+
+/* overlay escuro, mais forte do lado do texto */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+        rgba(10, 17, 35, 0.92) 0%,
+        rgba(10, 17, 35, 0.65) 55%,
+        rgba(10, 17, 35, 0.35) 100%);
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+.hero-row {
+    display: flex;
+    align-items: center;
+}
+
+/* o Bootstrap 3 injeta pseudo-elementos no .row que atrapalham o flex */
+.hero-row::before,
+.hero-row::after {
+    display: none;
+}
+
+.hero-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.2;
+    margin: 0 0 20px;
+}
+
+.hero-subtitle {
+    color: #cfd8ea;
+    font-size: 0.95rem;
+    margin: 0 0 30px;
+    padding-left: 12px;
+    border-left: 3px solid #1e5bd8;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn-hero {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.btn-hero:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.btn-hero-primary {
+    color: #fff;
+    background: linear-gradient(90deg, #1e5bd8, #3ec6f0);
+}
+
+.btn-hero-primary:hover {
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(62, 198, 240, 0.35);
+}
+
+.btn-hero-outline {
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    background: transparent;
+}
+
+.btn-hero-outline:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.hero-logo-wrap {
+    text-align: center;
+}
+
+.hero-logo {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* tablet / mobile: empilha e centraliza */
+@media (max-width: 991px) {
+    .hero-row {
+        display: block;
+        padding: 60px 0;
+        text-align: center;
+    }
+    .hero-subtitle {
+        border-left: 0;
+        padding-left: 0;
+    }
+    .hero-cta {
+        justify-content: center;
+    }
+    .hero-logo-wrap {
+        margin-top: 40px;
+    }
+    .hero-logo {
+        max-width: 260px;
+    }
+}

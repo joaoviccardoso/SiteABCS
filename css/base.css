@@ -1,0 +1,130 @@
+/* ==========================================================
+   base.css — fontes, reset leve, tipografia e utilitários
+   ========================================================== */
+
+@font-face {
+    font-family: "Algeria";
+    src: url(css/ALGERIA.TTF) format("truetype");
+}
+
+@font-face {
+    font-family: "Corbel";
+    src: url(css/Corbel.ttf) format("truetype");
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 80px;
+    background-color: #FFF;
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+a {
+    /*color: white;*/
+    transition: 0.5s;
+}
+
+a.nodecoration {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+iframe {
+    height: 400px;
+    width: 600px;
+}
+
+.mapa iframe {
+    height: 300px;
+    width: 100%;
+    overflow: auto;
+}
+
+img.brand {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.brand {
+    font-family: "Algeria", Verdana, Tahoma;
+}
+
+.subbrand {
+    font-family: "Corbel", Verdana, Tahoma;
+}
+
+.icon {
+    fill: #ccc;
+}
+
+/* ---------- utilitários ---------- */
+.text-center {
+    text-align: center;
+}
+
+.black {
+    color: #000;
+}
+
+.white {
+    color: #FFF;
+}
+
+#pagina {
+    margin-bottom: 50px;
+}
+
+#success_message {
+    display: none;
+}
+
+/* ---------- animação fadein ---------- */
+#fadein {
+    animation: fadein 0.5s;
+    -moz-animation: fadein 0.5s;
+    -webkit-animation: fadein 0.5s;
+    -o-animation: fadein 0.5s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ---------- responsivo (base) ---------- */
+@media screen and (max-width: 720px) {
+    iframe {
+        height: 550px;
+        width: 640px;
+        max-width: 135%;
+        -webkit-transform: scale(0.75);
+        -webkit-transform-origin: 0 0;
+    }
+}
