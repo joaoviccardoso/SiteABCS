@@ -1,0 +1,412 @@
+@font-face {
+    font-family: "Algeria";
+    src: url(css/ALGERIA.TTF) format("truetype");
+}
+
+@font-face {
+    font-family: "Corbel";
+    src: url(css/Corbel.ttf) format("truetype");
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 80px;
+    background-color: #FFF;
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+a {
+    /*color: white;*/
+    transition: 0.5s;
+}
+
+.icon {
+    fill: #ccc;
+}
+
+iframe {
+    height: 400px;
+    width: 600px;
+}
+
+.mapa iframe {
+    height: 300px;
+    width: 100%;
+    overflow: auto;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #000099;
+    color: white;
+    margin-top: 50px;
+    padding-top: 20px;
+}
+
+.navbar-brand img {
+    max-width: 100%;
+    width: 110px;
+    margin-top: 0;
+}
+
+.navbar-inverse {
+    margin-bottom: 0;
+}
+
+.navbar {
+    border-radius: 0px;
+}
+
+.navbar.navbar-inverse {
+    background-color: #000033;
+    border: 0px;
+}
+
+.navbar-inverse .navbar-nav>li>a,
+.navbar-brand img {
+    color: white;
+    margin: 5px;
+    transition: 0.5s;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover,
+.navbar-brand img:hover {
+    background-color: #26267F;
+}
+
+li {
+    list-style-type: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.main-content {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.glyphicon.glyphicon-chevron-left,
+.glyphicon.glyphicon-chevron-right {
+    color: black;
+}
+
+img.brand {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.front:hover {
+    background-color: #ddd;
+}
+
+.premium {
+    color: #076A8B;
+}
+
+.mosaico {
+    color: #8B0748;
+}
+
+.citrus {
+    color: #5B8100;
+}
+
+.sat {
+    color: #FF8400;
+}
+
+.sysin {
+    color: #813B93;
+}
+
+.nfe {
+    color: #663333;
+}
+
+.cte {
+    color: #777777;
+}
+
+.mdfe {
+    color: #18A596;
+}
+
+.informatica {
+    color: #000066;
+}
+
+.black {
+    color: #000;
+}
+
+.white {
+    color: #FFF;
+}
+
+.imagem-wrapper {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+    /* Para fazer que a imagem com position-absolute respeite a sua posição consoante este selector, ou evitar que saia do mesmo */
+}
+
+.imagem {
+    width: 100%;
+    /* código abaixo centra a imagem ao centro */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.santaficha {
+    font-family: Arial, sans-serif, 'Franklin Gothic Medium', 'Arial Narrow';
+}
+
+.link-card {
+    text-decoration: none;
+    color: #555555;
+}
+
+.link-card:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.col-md-4 {
+    padding: 10px;
+    transition: 0.5s;
+}
+
+.smallitem {
+    display: none;
+}
+
+@media screen and (max-width:720px) {
+    iframe {
+        height: 550px;
+        width: 640px;
+        max-width: 135%;
+        -webkit-transform: scale(0.75);
+        -webkit-transform-origin: 0 0;
+    }
+    .smallitem {
+        display: block;
+        margin: 10px;
+        padding: 10px;
+    }
+    .navbar-brand img {
+        width: 70px;
+    }
+    .img {
+        margin-left: 0;
+    }
+}
+
+@media screen and (min-width:720px) {
+    .row-eq-height {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        padding-top: 30px;
+    }
+}
+
+.filtro {
+    position: relative;
+    z-index: 2;
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.50;
+    opacity: .50;
+}
+
+.back-premium {
+    background-image: url("../img/premium_banner.png");
+    background-position: center center;
+}
+
+.back-citrus {
+    background-image: url("../img/citrus_banner.jpg");
+    background-position: center center;
+}
+
+.back-mosaico {
+    background-image: url("../img/mosaico_banner.png");
+    background-position: center center;
+}
+
+.back-nfe {
+    background-image: url("../img/nfe_banner.png");
+    background-position: center center;
+}
+
+.back-sysin {
+    background-image: url("../img/sysin_banner.png");
+    background-position: center center;
+}
+
+.back-sat {
+    background-image: url("../img/sat_banner.png");
+    background-position: center center;
+}
+
+.back-cte {
+    background-image: url("../img/cte_banner.jpg");
+    background-position: center center;
+}
+
+.back-mdfe {
+    background-image: url("../img/mdfe_banner.jpg");
+    background-position: center center;
+}
+
+.brand {
+    font-family: "Algeria", Verdana, Tahoma;
+}
+
+.subbrand {
+    font-family: "Corbel", Verdana, Tahoma;
+}
+
+.gray1 {
+    background-color: #3636B2;
+    padding-bottom: 20px;
+    margin: 20px 0;
+}
+
+.gray2 {
+    background-color: #26267F;
+    padding-bottom: 20px;
+}
+
+a.nodecoration {
+    text-decoration: none;
+}
+
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+button.accordion.active,
+button.accordion:hover {
+    background-color: #ddd;
+}
+
+div.panel {
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+button.accordion:after {
+    content: 'Mostrar mais';
+    float: right;
+    transition: 0.5s;
+}
+
+button.accordion.active:after {
+    content: "Mostrar menos";
+    transition: 0.5s;
+}
+
+#fadein {
+    animation: fadein 0.5s;
+    -moz-animation: fadein 0.5s;
+    -webkit-animation: fadein 0.5s;
+    -o-animation: fadein 0.5s;
+}
+
+#success_message {
+    display: none;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#pagina {
+    margin-bottom: 50px;
+}
+
+.card:hover {
+    background-color: #ccccff;
+    transition: 0.5s;
+}
+.inicio{
+    padding: 30vh 10px ;
+    margin-bottom: 30px;
+    height: 95vh;
+}
+img.brand {
+    width:720px;
+    max-width: 100%;
+    max-height: 100%;
+}
+h1.subbrand{
+    margin-top:30px;
+    font-size: 3em;
+}
+#gradient
+{
+  padding: 0px;
+  margin: 0px;
+}
+.cta{
+    padding-top: 30px;
+}

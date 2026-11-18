@@ -1,0 +1,27 @@
+# Já existentes
+arquivo/
+relatorio/
+
+# Credenciais e configuração local
+const/const.php
+.env
+.user.ini
+php.ini
+php.ini.bak
+
+# Backups, zips e deploy
+*.zip
+*.bak
+*.sql
+
+# Logs
+error_log
+*.log
+
+# Verificação do Google e rascunhos
+google*.html
+index3.php
+
+# Editor e sistema
+.vscode/
+Thumbs.db
