@@ -143,6 +143,8 @@
   <div id="conteudo">
 <?php
   // rota atual, para marcar o item ativo do menu
+  $mensagemWhatsApp = "Olá! Acessei o site da ABCS Informática e gostaria de mais informações sobre os serviços.";
+  $linkWhatsApp = "https://wa.me/551938661100?text=" . urlencode($mensagemWhatsApp);
   $atual = explode('?', $_SERVER['REQUEST_URI']);
   $atual = trim($atual[0], '/');
   $partes = explode('/', $atual);
@@ -196,15 +198,21 @@
         </ul>
 
         <!-- botão WhatsApp no celular (dentro do menu aberto) -->
-        <a class="btn-whatsapp d-lg-none" href="https://wa.me/1938661100" target="_blank" rel="noopener">
-          <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp
+        <a class="btn-whatsapp d-lg-none"
+          href="<?php echo $linkWhatsApp; ?>"
+          target="_blank"
+          rel="noopener">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp
         </a>
       </div>
 
       <!-- botão WhatsApp no desktop (à direita) -->
       <div class="nav-cta d-none d-lg-flex">
-        <a class="btn-whatsapp" href="https://wa.me/1938661100" target="_blank" rel="noopener">
-          <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp
+        <a class="btn-whatsapp d-lg-none"
+          href="<?php echo $linkWhatsApp; ?>"
+          target="_blank"
+          rel="noopener">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp
         </a>
       </div>
     </nav>
