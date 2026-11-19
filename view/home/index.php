@@ -8,7 +8,7 @@
 
                     <div class="hero-cta">
                         <a href="#solucoes" class="btn-hero btn-hero-primary">Ver soluções</a>
-                        <a href="https://wa.me/55SEUNUMEROAQUI" target="_blank" rel="noopener" class="btn-hero btn-hero-outline">Falar no WhatsApp</a>
+                        <a href="#gerar-senha" target="_blank" rel="noopener" class="btn-hero btn-hero-outline">Gerar a Senha</a>
                     </div>
                 </div>
 

@@ -94,10 +94,10 @@ header('Content-Type: text/html; charset=utf-8');
       } else {
         $dataproc = date('d/m/Y');
       }
-      $dadosboleto["data_documento"]     = $dataproc; // Data de emiss�o do Boleto
+      $dadosboleto["data_documento"]     = $dataproc; // Data de emissão do Boleto
       $dadosboleto["data_processamento"] = $dataproc; // Data de processamento do boleto (opcional)
 
-      $dadosboleto["valor_boleto"]       = $reg['valorvenc']; // Valor do Boleto - REGRA: Com v�rgula e sempre com duas casas depois da virgula
+      $dadosboleto["valor_boleto"]       = $reg['valorvenc']; // Valor do Boleto - REGRA: Com vírgula e sempre com duas casas depois da virgula
       $dadosboleto["sacado"]    = $reg['nome'];
       $dadosboleto["endereco1"] = "$reg[endereco], $reg[numero] - $reg[complemento] - $reg[bairro]";
       $dadosboleto["endereco2"] = "$reg[cidade] - $reg[estado] -  $reg[cep]";
@@ -118,7 +118,7 @@ header('Content-Type: text/html; charset=utf-8');
       $dadosboleto["numero_parcela"]      = "001";
       $dadosboleto["agencia"] = $cooperativa;    // Num da agencia, sem digito
       $dadosboleto["conta"]   = $cedente; // Num da conta, sem digito
-      $dadosboleto["convenio"] = $cedente; // Num do conv�nio - REGRA: No maximo 7 digitos
+      $dadosboleto["convenio"] = $cedente; // Num do convênio - REGRA: No maximo 7 digitos
       $dadosboleto["carteira"] = "1";
       $dadosboleto["identificacao"] = "ABCS Informática";
       $dadosboleto["cpf_cnpj"]      = "00.246.242/0001-60";
@@ -150,43 +150,41 @@ header('Content-Type: text/html; charset=utf-8');
       echo '<meta http-equiv="refresh" content="0;url=/500"/>' ;
     }
   } else {
+    $op = isset($_POST['op']) ? $_POST['op'] : '';
+    $cnpjcpfDigitado = isset($_POST['edtCnpjCpf']) ? htmlspecialchars($_POST['edtCnpjCpf'], ENT_QUOTES, 'UTF-8') : '';
 ?>
-      <div class='container' id='pagina'>
-        <h1>Sistema de Geração de Boletos</h1>
-        <?php
-    if (isset ($_POST['op'])){
-      $op = $_POST['op'];
-    }
-    if (!isset($_POST['op'])) {
-?>
-          <br />Informe o CNPJ ou CPF do titular do cadastro na ABCS Informática e clique no bot&atilde;o "Listar Boletos":
-          <br
-          />
-          <br />
-          <form action=index.php method=POST>
-            <input type=hidden name='op' value='l' /> CPF ou CNPJ:
-            <input type=text name="edtCnpjCpf" /> (somente números)
-            <br />
-            <br />
-            <input type=submit value="Listar Boletos" />
-          </form>
-      </div>
-      <?php
-    } elseif ($op=='l') {
+<!-- ===================== NOVO VISUAL (só HTML/CSS mudou) ===================== -->
+<section class="servico" id="pagina1">
+  <div class="servico__grid">
+    <div class="servico__conteudo">
+      <p class="servico__eyebrow">Soluções corporativas</p>
+      <h1>Emissão de Boleto OnLine</h1>
+      <p class="servico__texto">Informe o CNPJ ou CPF do titular do cadastro na ABCS Informática e clique no botão "Listar Boletos".</p>
+
+      <form class="servico__form" action="index.php" method="POST">
+        <input type="hidden" name="op" value="l" />
+        <label for="edtCnpjCpf">CPF ou CNPJ (somente números):</label>
+        <input type="text" name="edtCnpjCpf" id="edtCnpjCpf" inputmode="numeric" placeholder="Somente números" value="<?php echo $cnpjcpfDigitado; ?>" />
+        <button class="servico__btn" type="submit">Listar Boletos</button>
+      </form>
+
+      <div class="servico__resultado">
+<?php
+    if ($op=='l') {
       $cnpjcpf=$_POST["edtCnpjCpf"];
 
       if (!validaCPF($cnpjcpf) && !validaCNPJ($cnpjcpf))
       {
-        echo "<br /><br /><h1><font color=red>CNPJ/CPF inválido!</font></h1>";
+        echo "<p class=\"servico__erro\">CNPJ/CPF inválido!</p>";
       } else {
         if (trim($cnpjcpf)!='') {
            $idcon = mysqli_connect("186.233.16.211", "abcs_boleto", "BBLuPvK-~861", "abcs_boleto") or die( 'Erro ao conectar com o banco de dados! ' . db_error() );
           $idqry  = mysqli_query($idcon, "select boletoabcs.*, datediff(CURDATE(),datavenc) as atraso from boletoabcs where cnpjcpfnum='$cnpjcpf'");
           if (mysqli_num_rows($idqry)>0) {
-            echo "<br /><br />Clique no botão <img src=\"boleto.gif\" /> na frente da parcela para gerar o boleto correspondente:<br /><br />";
-            echo "<table class=listabols>";
+            echo "<p>Clique no botão <img src=\"boleto.gif\" alt=\"boleto\" /> na frente da parcela para gerar o boleto correspondente:</p>";
+            echo "<table class=\"listabols\">";
             echo "<tr><th align=\"left\">Cliente</th><th align=\"center\">Nosso Número</th><th align=\"center\">Vencimento</th><th align=\"right\">Valor</th><th></th></tr>";
-            while ($reg = mysqli_fetch_array( $idqry, MYSQL_ASSOC )) {
+            while ($reg = mysqli_fetch_array( $idqry, MYSQLI_ASSOC )) {
               $hoje=date("Y-m-d");
               $anteontem =date("Y-m-d", time() - 172800);
               $class="";
@@ -204,26 +202,36 @@ header('Content-Type: text/html; charset=utf-8');
                 }
               }
               $link="<a href=\"index.php?gerar=s&codbol=$reg[codigo]\" target=new>";
-              echo "<tr><td>$reg[nome]</td>";
-              echo "<td align=\"center\">$reg[nossonr]</a></td>";
+              echo "<tr $class><td>$reg[nome]</td>";
+              echo "<td align=\"center\">$reg[nossonr]</td>";
               echo "<td align=\"center\">";
               echo converter_data($reg['datavenc'] );
               echo "</td>";
               echo "<td align=\"right\">" . number_format($reg['valorvenc'],2) . "</td>";
-              echo "<td with=\"42\" align=\"center\">$link<img src=\"boleto.gif\" border=\"0\" /></a>&nbsp;&nbsp;<a class=\"tooltip\" href=\"#\"><img src=\"detalhes.gif\" border=\"0\" />";
+              echo "<td width=\"42\" align=\"center\">$link<img src=\"boleto.gif\" border=\"0\" /></a>&nbsp;&nbsp;<a class=\"tooltip\" href=\"#\"><img src=\"detalhes.gif\" border=\"0\" />";
               echo "<span><b>Detalhes da Fatura:</b><br />$reg[detalhe]</span>";
               echo "</a></td></tr>";
             }
             echo "</table>";
-            echo "<br /><br /><i>Obs: os boletos j&aacute; quitados sair&atilde;o da lista de parcelas em aberto em at&eacute; 2 (dois) dias &uacute;teis ap&oacute;s o pagamento</i>";
+            echo "<p><em>Obs: os boletos já quitados sairão da lista de parcelas em aberto em até 2 (dois) dias úteis após o pagamento</em></p>";
           } else {
-            echo "<BR /><BR /><h1><font color=red>NENHUM BOLETO ENCONTRADO PARA O DOCUMENTO INFORMADO!</font></h1>";
+            echo "<p class=\"servico__erro\">NENHUM BOLETO ENCONTRADO PARA O DOCUMENTO INFORMADO!</p>";
           }
           mysqli_close($idcon);
         }
         else
-          echo 'Favor informar o CNPJ ou CPF do titular do contrato de acesso � internet!';
+          echo '<p class="servico__erro">Favor informar o CNPJ ou CPF do titular do contrato de acesso à internet!</p>';
       }
     }
+?>
+      </div>
+    </div>
+
+    <div class="servico__foto">
+      <img src="/img/boleto-hero.jpg" alt="Pessoa conferindo um boleto com notebook e calculadora" />
+    </div>
+  </div>
+</section>
+<?php
   }
-  ?>
+?>

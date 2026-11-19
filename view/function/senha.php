@@ -1,19 +1,27 @@
-<div class='container cta' id='pagina'>
-  <h1>Senha do seu sistema
-    <font class='brand'>ABCS</font>
-  </h1>
-  <div class="wrap">
-    <div class="form-group">
-      <form method='POST' action='\senha'>
-        <p>Digite seu serial:</p>
-        <input style='text-transform: uppercase;' type='text' name='serial' id='serial' value='<?php echo $serial ?>' />
-        <input class='btn btn-info' type='submit' value='Gerar Senha' />
+<section class="servico" id="pagina1">
+  <div class="servico__grid">
+    <div class="servico__conteudo">
+      <p class="servico__eyebrow">Soluções corporativas</p>
+      <h1>Acesse sua senha do sistema ABCS</h1>
+      <p class="servico__texto">Informe o número de série para gerar ou recuperar sua senha de acesso com segurança.</p>
+
+      <form class="servico__form" method="POST" action="/senha">
+        <label for="serial">Digite seu serial:</label>
+        <input type="text" name="serial" id="serial" placeholder="Serial"
+               style="text-transform: uppercase;"
+               value="<?php echo htmlspecialchars($serial ?? '', ENT_QUOTES, 'UTF-8'); ?>" />
+        <button class="servico__btn" type="submit">Gerar Senha</button>
       </form>
+
+      <?php if ($_POST) { ?>
+        <div class="servico__resultado">
+          <?php echo $this->retornoSite($obj); ?>
+        </div>
+      <?php } ?>
     </div>
-    <?php
-      if ($_POST) {
-          echo $this->retornoSite($obj);
-      }
-    ?>
+
+    <div class="servico__foto">
+      <img src="/img/senha-hero.jpg" alt="Pessoa usando celular com cadeado de segurança diante de um notebook" />
+    </div>
   </div>
-</div>
+</section>

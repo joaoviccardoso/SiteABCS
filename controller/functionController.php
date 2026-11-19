@@ -176,6 +176,7 @@ class functionController
             "css/components.css",
             "css/produtos.css",
             "css/hero.css",
+            "css/gerar.css",
         );
         $buffer = "";
         foreach ($cssFiles as $cssFile) {

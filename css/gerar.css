@@ -1,0 +1,114 @@
+/* ABCS - páginas Senha e Boleto (hero em 2 colunas) */
+.servico {
+  --navy: #0f1b3d;
+  --texto: #3b4663;
+  --azul: #1565c0;
+  --azul-claro: #1e9bff;
+  --borda: #cfd6e6;
+  background: linear-gradient(135deg, #f7f9ff 0%, #e6ecfb 100%) !important;
+  margin-bottom: 0 !important;
+  padding: 72px 0;
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  color: var(--texto);
+}
+.servico__grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.servico__eyebrow {
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--azul);
+  margin: 0 0 14px;
+}
+.servico h1 {
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 16px;
+}
+.servico__texto { font-size: 15px; line-height: 1.55; margin: 0 0 18px; max-width: 46ch; }
+.servico label { display: block; font-size: 13px; margin: 0 0 8px; color: var(--navy); }
+
+.servico__form { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.servico__form label { flex: 0 0 100%; margin: 0; }
+.servico__form input[type=text] {
+  flex: 1 1 200px;
+  min-width: 0;
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+  font-size: 14px;
+  color: var(--navy);
+}
+.servico__form input[type=text]:focus {
+  outline: 2px solid var(--azul-claro);
+  outline-offset: 1px;
+  border-color: var(--azul-claro);
+}
+.servico__btn {
+  height: 42px;
+  padding: 0 26px;
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--azul), var(--azul-claro));
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.servico__btn:hover { filter: brightness(1.08); }
+.servico__btn:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
+
+.servico__foto img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3.3;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(15, 27, 61, .22);
+}
+
+/* resultados (senha gerada / lista de boletos) */
+.servico__resultado { margin-top: 28px; }
+.servico__erro { color: #b3261e; font-weight: 600; margin: 24px 0 0; }
+.listabols { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; font-size: 14px; }
+.listabols th, .listabols td { padding: 10px 12px; border-bottom: 1px solid #e6ebf5; }
+.listabols th { background: #eef2fb; color: var(--navy); font-weight: 600; }
+.listabols .bg-danger td { background: #fdecea; }
+
+@media (max-width: 860px) {
+  .servico { padding: 40px 0; }
+  .servico__grid { grid-template-columns: 1fr; gap: 32px; }
+  .servico__foto { order: -1; }
+  .servico h1 { font-size: 28px; }
+}
+
+/* lista de boletos em largura total (abaixo do hero) */
+.servico__lista { max-width: 1120px; margin: 40px auto 0; padding: 0 24px; }
+.servico__tabela { overflow-x: auto; border-radius: 10px; box-shadow: 0 8px 24px rgba(15, 27, 61, .08); background: #fff; }
+.servico__tabela .listabols { min-width: 820px; border-radius: 0; }
+.listabols td { vertical-align: middle; }
+.servico__btn--sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  font-size: 13px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+a.servico__btn, a.servico__btn:hover { color: #fff; text-decoration: none; }
+.servico__nota { font-size: 13px; margin: 14px 0 0; }
