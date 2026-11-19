@@ -49,26 +49,133 @@
     </script>
   </body>
 
-  <script async defer>
-    // o footer é absoluto no fim da página; a altura dele vira padding-bottom do body
+  <script>
+    // O footer é absoluto no fim da página; sua altura vira padding-bottom do body.
     function ajustaRodape() {
       var f = document.querySelector('.footer');
       if (f) document.body.style.paddingBottom = f.offsetHeight + 'px';
     }
 
-    function paginaCarregada() {
-      var pre = document.getElementById("preloader_3");
-      document.getElementById("conteudo").style.display = 'block';
-      document.getElementById("pagina").style.display = 'block';
-      ajustaRodape();
-      if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajustaRodape);
+    // Progresso estimado a partir do carregamento dos recursos encontrados no HTML.
+    // O percentual chega a 90% durante o carregamento e só vai a 100% no evento load.
+    var totalRecursos = 0;
+    var recursosCarregados = 0;
+    var progressoExibido = 0;
+    var recursosMonitorados = new WeakSet();
 
-      pre.classList.add('saindo');
-      setTimeout(function () { pre.style.display = 'none'; }, 400);
+    function atualizarBarra() {
+      var percentual = totalRecursos > 0
+        ? Math.round((recursosCarregados / totalRecursos) * 90)
+        : 5;
+
+      percentual = Math.min(90, Math.max(progressoExibido, percentual));
+      progressoExibido = percentual;
+
+      var barra = document.querySelector('.loader-barra span');
+      var texto = document.getElementById('loader-percent');
+
+      if (barra) barra.style.width = percentual + '%';
+      if (texto) texto.textContent = percentual + '%';
     }
 
+    function monitorarRecurso(elemento) {
+      if (recursosMonitorados.has(elemento)) return;
+
+      var tag = elemento.tagName;
+      var relevante =
+        (tag === 'IMG') ||
+        (tag === 'SCRIPT' && elemento.src) ||
+        (tag === 'LINK' && elemento.rel && elemento.rel.toLowerCase() === 'stylesheet') ||
+        tag === 'IFRAME' ||
+        ((tag === 'VIDEO' || tag === 'AUDIO') && elemento.src);
+
+      if (!relevante) return;
+
+      recursosMonitorados.add(elemento);
+      totalRecursos++;
+
+      var finalizado = false;
+
+      function concluirRecurso() {
+        if (finalizado) return;
+        finalizado = true;
+        recursosCarregados++;
+        atualizarBarra();
+      }
+
+      elemento.addEventListener('load', concluirRecurso, { once: true });
+      elemento.addEventListener('error', concluirRecurso, { once: true });
+
+      // Recursos em cache podem já ter terminado antes da instalação do listener.
+      if (
+        (tag === 'IMG' && elemento.complete) ||
+        (tag === 'LINK' && elemento.sheet) ||
+        (tag === 'SCRIPT' && elemento.readyState === 'complete') ||
+        ((tag === 'VIDEO' || tag === 'AUDIO') && elemento.readyState >= 2)
+      ) {
+        concluirRecurso();
+      }
+    }
+
+    function iniciarMonitoramento() {
+      document.querySelectorAll('img, script[src], link[rel="stylesheet"], iframe, video[src], audio[src]')
+        .forEach(monitorarRecurso);
+
+      // Também acompanha recursos adicionados dinamicamente, como folhas de estilo.
+      var observador = new MutationObserver(function (mutacoes) {
+        mutacoes.forEach(function (mutacao) {
+          mutacao.addedNodes.forEach(function (no) {
+            if (no.nodeType !== 1) return;
+
+            monitorarRecurso(no);
+            if (no.querySelectorAll) {
+              no.querySelectorAll('img, script[src], link[rel="stylesheet"], iframe, video[src], audio[src]')
+                .forEach(monitorarRecurso);
+            }
+          });
+        });
+      });
+
+      observador.observe(document.documentElement, { childList: true, subtree: true });
+      atualizarBarra();
+    }
+
+    function paginaCarregada() {
+      var pre = document.getElementById('preloader_3');
+      var conteudo = document.getElementById('conteudo');
+      var pagina = document.getElementById('pagina');
+
+      // O evento load já ocorreu. Aguarda também a conclusão das fontes, quando suportado.
+      var fontesProntas = (document.fonts && document.fonts.ready)
+        ? document.fonts.ready
+        : Promise.resolve();
+
+      fontesProntas.then(function () {
+        progressoExibido = 100;
+
+        var barra = document.querySelector('.loader-barra span');
+        var texto = document.getElementById('loader-percent');
+        if (barra) barra.style.width = '100%';
+        if (texto) texto.textContent = '100%';
+
+        if (conteudo) conteudo.style.display = 'block';
+        if (pagina) pagina.style.display = 'block';
+
+        ajustaRodape();
+        pre.classList.add('saindo');
+
+        setTimeout(function () {
+          pre.style.display = 'none';
+        }, 400);
+      });
+    }
+
+    // Inicia imediatamente para conseguir registrar também os scripts e imagens
+    // que serão encontrados mais adiante durante a leitura do HTML.
+    iniciarMonitoramento();
+
     window.addEventListener('resize', ajustaRodape);
- </script>
+  </script>
   
   
   
@@ -130,32 +237,36 @@
   100% { clip-path: inset(0 0 0 100%); }
 }
 
-/* barra de progresso */
+/* Barra de progresso vinculada ao carregamento dos recursos */
 .loader-barra {
-  width: 160px;
-  height: 3px;
-  border-radius: 3px;
+  width: 180px;
+  height: 4px;
+  border-radius: 4px;
   background: #e6e6ee;
   overflow: hidden;
 }
 
 .loader-barra span {
   display: block;
-  width: 40%;
+  width: 5%;
   height: 100%;
-  border-radius: 3px;
+  border-radius: 4px;
   background: #000066;
-  animation: barra-corre 1.2s ease-in-out infinite;
+  transition: width .25s ease;
 }
 
-@keyframes barra-corre {
-  0%   { transform: translateX(-100%); }
-  100% { transform: translateX(250%); }
+.loader-percent {
+  margin-top: -18px;
+  color: #000066;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .loader-logo .logo-cor { animation: none; clip-path: inset(0 0 0 0); }
-  .loader-barra span { animation: none; width: 100%; }
+  .loader-barra span { transition: none; }
 }
 </style>
 <div id="preloader_3">
@@ -164,6 +275,7 @@
     <img class="logo-cor" src="<?php echo($dot);?>/img/1LogoABCSInfo.png" alt="ABCS Informática">
   </div>
   <div class="loader-barra"><span></span></div>
+  <div class="loader-percent" id="loader-percent">5%</div>
 </div>
 
 <body onLoad="paginaCarregada();">
