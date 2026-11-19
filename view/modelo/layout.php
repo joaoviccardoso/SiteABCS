@@ -56,11 +56,14 @@
     }
 
     function paginaCarregada() {
-      document.getElementById("preloader_3").style.display = "none";
+      var pre = document.getElementById("preloader_3");
       document.getElementById("conteudo").style.display = 'block';
       document.getElementById("pagina").style.display = 'block';
       ajustaRodape();
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajustaRodape);
+
+      pre.classList.add('saindo');
+      setTimeout(function () { pre.style.display = 'none'; }, 400);
     }
 
     window.addEventListener('resize', ajustaRodape);
@@ -72,71 +75,95 @@
 
 <style>
   #conteudo,
-  #pagina {
-    display: none;
-  }
+#pagina {
+  display: none;
+}
 
-  #preloader_3 {
-    z-index: 100;
-    position: absolute;
-    top: 40%;
-    left: 40%;
-    margin-top: -40px;
-    margin-left: -40px;
-  }
+#preloader_3 {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  background: #fff;
+  transition: opacity .4s ease, visibility .4s ease;
+}
 
-  #preloader_3:before {
-    width: 100px;
-    height: 100px;
-    border-radius: 100px;
-    background: blue;
-    content: '';
-    position: absolute;
-    background: #000066;
-    animation: preloader_3_before 1.5s infinite ease-in-out;
-  }
+#preloader_3.saindo {
+  opacity: 0;
+  visibility: hidden;
+}
 
-  #preloader_3:after {
-    width: 100px;
-    height: 100px;
-    border-radius: 100px;
-    background: blue;
-    content: '';
-    position: absolute;
-    background: #777777;
-    left: 110px;
-    animation: preloader_3_after 1.5s infinite ease-in-out;
-  }
+.loader-logo {
+  position: relative;
+  width: 260px;
+  max-width: 70vw;
+}
 
-  @keyframes preloader_3_before {
-    0% {
-      transform: translateX(0px) rotate(0deg)
-    }
-    50% {
-      transform: translateX(200px) scale(1.2) rotate(225deg);
-      background: #777777;
-      border-radius: 0px;
-    }
-    100% {
-      transform: translateX(0px) rotate(0deg)
-    }
-  }
+.loader-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
-  @keyframes preloader_3_after {
-    0% {
-      transform: translateX(0px)
-    }
-    50% {
-      transform: translateX(-200px) scale(1.2) rotate(-225deg);
-      background: #000066;
-      border-radius: 0px;
-    }
-    100% {
-      transform: translateX(0px);
-    }
-  }
+/* logo apagado ao fundo */
+.loader-logo .logo-base {
+  filter: grayscale(1) opacity(.2);
+}
+
+/* logo colorido que vai sendo revelado */
+.loader-logo .logo-cor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  clip-path: inset(0 100% 0 0);
+  animation: logo-preenche 1.8s ease-in-out infinite;
+}
+
+@keyframes logo-preenche {
+  0%   { clip-path: inset(0 100% 0 0); }
+  50%  { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(0 0 0 100%); }
+}
+
+/* barra de progresso */
+.loader-barra {
+  width: 160px;
+  height: 3px;
+  border-radius: 3px;
+  background: #e6e6ee;
+  overflow: hidden;
+}
+
+.loader-barra span {
+  display: block;
+  width: 40%;
+  height: 100%;
+  border-radius: 3px;
+  background: #000066;
+  animation: barra-corre 1.2s ease-in-out infinite;
+}
+
+@keyframes barra-corre {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-logo .logo-cor { animation: none; clip-path: inset(0 0 0 0); }
+  .loader-barra span { animation: none; width: 100%; }
+}
 </style>
-<div id="preloader_3"></div>
+<div id="preloader_3">
+  <div class="loader-logo">
+    <img class="logo-base" src="<?php echo($dot);?>/img/1LogoABCSInfo.png" alt="">
+    <img class="logo-cor" src="<?php echo($dot);?>/img/1LogoABCSInfo.png" alt="ABCS Informática">
+  </div>
+  <div class="loader-barra"><span></span></div>
+</div>
 
 <body onLoad="paginaCarregada();">
 
