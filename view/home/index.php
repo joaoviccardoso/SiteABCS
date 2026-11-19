@@ -1,7 +1,7 @@
 <div id='pagina'>
     <section id="gradient" class="hero-background hero">
         <div class="container">
-            <div class="row hero-row">
+            <div class="hero-row">
                 <div class="col-md-7 hero-content">
                     <h1 class="hero-title">Soluções completas em tecnologia para sua empresa</h1>
                     <p class="hero-subtitle">sistemas + suporte + manutenção</p>

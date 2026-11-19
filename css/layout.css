@@ -2,36 +2,175 @@
    layout.css — estrutura da página: navbar, footer, conteúdo
    ========================================================== */
 
-/* ---------- navbar ---------- */
-.navbar {
-    border-radius: 0px;
-}
-
-.navbar-inverse {
+/* ---------- navbar (mobile primeiro) ---------- */
+.navbar.navbar-abcs {
+    min-height: 80px;
+    background: #fff;
+    border: 0;
+    border-radius: 0;
     margin-bottom: 0;
+    padding: 12px 16px;
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.08);
+    font-family: 'Montserrat', Arial, sans-serif;
 }
 
-.navbar.navbar-inverse {
-    background-color: #000033;
-    border: 0px;
+.navbar-abcs .navbar-brand {
+    padding: 0;
+    margin-right: 0;
 }
 
-.navbar-brand img {
+.img-nav {
+    height: 56px;
+    width: auto;
     max-width: 100%;
-    width: 110px;
-    margin-top: 0;
 }
 
-.navbar-inverse .navbar-nav>li>a,
-.navbar-brand img {
-    color: white;
-    margin: 5px;
-    transition: 0.5s;
+.navbar-abcs .navbar-collapse {
+    padding-top: 10px;
 }
 
-.navbar-inverse .navbar-nav>li>a:hover,
-.navbar-brand img:hover {
-    background-color: #26267F;
+/* o seletor com 4 classes vence o padding do Bootstrap */
+.navbar.navbar-abcs .navbar-nav .nav-link {
+    position: relative;
+    padding: 10px 0;
+    color: #1f2937;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.navbar.navbar-abcs .navbar-nav .nav-link:hover,
+.navbar.navbar-abcs .navbar-nav .nav-link:focus,
+.navbar.navbar-abcs .navbar-nav .nav-link.active {
+    color: #1e5bd8;
+}
+
+/* sublinhado do item ativo (usa ::before porque o ::after é o caret do dropdown) */
+.navbar-abcs .nav-link.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 28px;
+    height: 2px;
+    border-radius: 2px;
+    background: #1e5bd8;
+}
+
+.navbar-abcs .navbar-toggler {
+    padding: 6px 12px;
+    color: #1f2937;
+    border: 1px solid rgba(15, 23, 42, 0.2);
+    border-radius: 6px;
+    background: transparent;
+}
+
+.navbar-abcs .dropdown-menu {
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
+    font-size: 0.8rem;
+}
+
+.navbar-abcs .dropdown-item {
+    padding: 8px 18px;
+    color: #1f2937;
+}
+
+.navbar-abcs .dropdown-item:hover {
+    color: #1e5bd8;
+    background: #f1f5fb;
+}
+
+/* botão WhatsApp */
+.btn-whatsapp {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 8px;
+    color: #fff;
+    background: linear-gradient(90deg, #1e5bd8, #3ec6f0);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-whatsapp:hover {
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(62, 198, 240, 0.35);
+}
+
+.btn-whatsapp .fa {
+    margin-right: 6px;
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+/* no celular o botão fica dentro do menu aberto, em largura total */
+.navbar-collapse .btn-whatsapp {
+    display: block;
+    margin: 12px 0 8px;
+    text-align: center;
+}
+
+/* ---------- navbar: desktop (a partir de 992px) ---------- */
+@media (min-width: 992px) {
+    .navbar.navbar-abcs {
+        padding: 12px 32px;
+    }
+
+    /* logo e botão ocupam o mesmo espaço nas laterais,
+       então o menu fica no centro real da página */
+    .navbar-abcs .navbar-brand,
+    .navbar-abcs .nav-cta {
+        flex: 1 1 0;
+    }
+
+    .navbar-abcs .nav-cta {
+        justify-content: flex-end;
+    }
+
+    .navbar-abcs .navbar-collapse {
+        flex: 0 0 auto;
+        justify-content: center;
+        padding-top: 0;
+    }
+
+    .navbar.navbar-abcs .navbar-nav .nav-link {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .navbar-abcs .nav-link.active::before {
+        left: 12px;
+        right: 12px;
+        width: auto;
+    }
+
+    .navbar-collapse .btn-whatsapp {
+        margin: 0;
+    }
+}
+
+/* telas grandes: mais respiro e fonte maior */
+@media (min-width: 1200px) {
+    .navbar.navbar-abcs {
+        padding: 12px 112px;
+    }
+
+    .navbar.navbar-abcs .navbar-nav .nav-link {
+        padding: 8px 20px;
+        font-size: 1.1rem;
+    }
+
+    .navbar-abcs .nav-link.active::before {
+        left: 20px;
+        right: 20px;
+    }
 }
 
 /* ---------- conteúdo ---------- */
@@ -41,14 +180,82 @@
 }
 
 /* ---------- footer ---------- */
+/* fica absoluto no fim da página; a altura dele é aplicada como
+   padding-bottom no body por ajustaRodape() (veja o JS do layout) */
 .footer {
     position: absolute;
+    left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #000099;
-    color: white;
-    margin-top: 50px;
-    padding-top: 20px;
+    margin-top: 0;
+    padding: 48px 0 0;
+    background: #131B2E;
+    color: #aab4c8;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 0.8rem;
+}
+
+.footer-brand {
+    margin: 0 0 16px;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.footer-title {
+    margin: 0 0 16px;
+    color: #cfd6e6;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer-text {
+    margin: 0;
+    line-height: 1.7;
+}
+
+.footer-list {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-list li {
+    margin-bottom: 10px;
+}
+
+.footer-list a {
+    color: #aab4c8;
+    text-decoration: none;
+}
+
+.footer-list a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-list .fa {
+    width: 18px;
+    margin-right: 6px;
+    color: #8fa0c0;
+}
+
+.footer-col {
+    margin-bottom: 24px;
+}
+
+.footer-bottom {
+    margin-top: 8px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: #8794ad;
+    font-size: 0.72rem;
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0 0 4px;
 }
 
 /* ---------- responsivo (layout) ---------- */
@@ -61,9 +268,6 @@
         display: block;
         margin: 10px;
         padding: 10px;
-    }
-    .navbar-brand img {
-        width: 70px;
     }
     .img {
         margin-left: 0;

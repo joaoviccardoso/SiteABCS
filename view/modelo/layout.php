@@ -27,6 +27,8 @@
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0">
 
+  <!-- Fonte Montserrat (navbar, hero e footer) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <noscript id="deferred-styles">
       <link rel="stylesheet" type="text/css" href="<?php echo($dot);?>/minify "/>
@@ -47,12 +49,21 @@
   </body>
 
   <script async defer>
+    // o footer é absoluto no fim da página; a altura dele vira padding-bottom do body
+    function ajustaRodape() {
+      var f = document.querySelector('.footer');
+      if (f) document.body.style.paddingBottom = f.offsetHeight + 'px';
+    }
+
     function paginaCarregada() {
       document.getElementById("preloader_3").style.display = "none";
       document.getElementById("conteudo").style.display = 'block';
       document.getElementById("pagina").style.display = 'block';
+      ajustaRodape();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajustaRodape);
     }
-  
+
+    window.addEventListener('resize', ajustaRodape);
  </script>
   
   
@@ -130,24 +141,34 @@
 <body onLoad="paginaCarregada();">
 
   <div id="conteudo">
-    <nav class="navbar navbar-expand-md navbar-inverse">
+<?php
+  // rota atual, para marcar o item ativo do menu
+  $atual = explode('?', $_SERVER['REQUEST_URI']);
+  $atual = trim($atual[0], '/');
+  $partes = explode('/', $atual);
+  $atual = $partes[0];
+  $ativo = function ($rotas) use ($atual) {
+    return in_array($atual, (array) $rotas) ? ' active' : '';
+  };
+?>
+    <nav class="navbar navbar-expand-lg navbar-abcs">
       <a class="navbar-brand" href="<?php echo($dot);?>/">
-        <img src='<?php echo($dot);?>/img/abcs_branco.png' alt='ABCS Informática' />
+        <img class="img-nav" src="<?php echo($dot);?>/img/1LogoABCSInfo.png" alt="ABCS Informática">
       </a>
-      <button class="navbar-toggler bg-light text-dark" type="button" data-toggle="collapse" data-target="#navbar01" aria-controls="navbar01"
-        aria-expanded="true" aria-label="Toggle navigation">
-        <span>
-          <i class="fa fa-bars" aria-hidden="true"></i>
-        </span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar01" aria-controls="navbar01" aria-expanded="false" aria-label="Abrir menu">
+        <i class="fa fa-bars" aria-hidden="true"></i>
       </button>
 
-      <div class="collapse navbar-collapse text-center" id ="navbar01" >
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-laptop" aria-hidden="true"></i>
-              Sistemas
-            </a>
+      <div class="collapse navbar-collapse" id="navbar01">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link<?php echo $ativo(array('', 'index')); ?>" href="<?php echo($dot);?>/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo($dot);?>/#sobre">Sobre</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle<?php echo $ativo(array('premium', 'mosaico', 'citrus', 'nfe', 'sysin', 'sat', 'cte', 'mdfe')); ?>" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sistemas</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
               <a class="dropdown-item" href="<?php echo($dot);?>/premium">ABCS Premium</a>
               <a class="dropdown-item" href="<?php echo($dot);?>/mosaico">ABCS Mosaico</a>
@@ -161,75 +182,73 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://www.instagram.com/abcsinformatica/" , target="_blank">
-              <i class="fa fa-instagram" aria-hidden="true"></i> Instagram
-            </a>
+            <a class="nav-link<?php echo $ativo(array('senha', 'acesso')); ?>" href="<?php echo($dot);?>/senha">Senha</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo($dot);?>/contato">
-              <i class="fa fa-envelope" aria-hidden="true"></i> Contato</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo($dot);?>/boleto">
-              <i class="fa fa-barcode" aria-hidden="true"></i> Boleto</a>
+            <a class="nav-link<?php echo $ativo('boleto'); ?>" href="<?php echo($dot);?>/boleto">Boleto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo($dot);?>/senha">
-              <i class="fa fa-unlock" aria-hidden="true"></i> Senha</a>
+            <a class="nav-link" href="<?php echo($dot);?>/#manutencao">Manutenção</a>
           </li>
-          <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-info-circle" aria-hidden="true"></i>
-              Ajuda
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdown">
-              <a class="dropdown-item" href="<?php echo($dot);?>/ajuda/premium">ABCS Premium</a>
-              <a class="dropdown-item" href="<?php echo($dot);?>/ajuda/mosaico">ABCS Mosaico</a>
-              <a class="dropdown-item" href="<?php echo($dot);?>/ajuda/citrus">ABCS Citrus</a>
-              <a class="dropdown-item" href="<?php echo($dot);?>/ajuda/nfe">ABCS NFe</a>
-              <a class="dropdown-item" href="<?php echo($dot);?>/ajuda/sysin">ABCS SysIn</a>
-              <a class="dropdown-item" href="<?php echo($dot);?>/ajuda/sat">ABCS SAT</a>
-              <a class="dropdown-item" href="<?php echo($dot);?>/ajuda/cte">ABCS CTe</a>
-              <a class="dropdown-item" href="<?php echo($dot);?>/ajuda/mdfe">ABCS MDFe</a>
-              <a class="dropdown-item" href="http://www.santaficha.com.br/tutoriais" target="_blank">SANTA FICHA</a>
-            </div>
-          </li>
-
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-         <!-- <li class="nav-item">
-            <a class="nav-link bg-success text-warning" href="?php echo($dot);/bolaoabcs">
-              <i class="fa fa-futbol-o" aria-hidden="true"></i> Bolão ABCS</a>
-          </li> -->
           <li class="nav-item">
-            <a class="nav-link bg-info" href="<?php echo($dot);?>/teamviewer" target="_blank" role="button">
-              <i class="fa fa-desktop" aria-hidden="true"></i> TeamViewer</a>
+            <a class="nav-link<?php echo $ativo('contato'); ?>" href="<?php echo($dot);?>/contato">Contato</a>
           </li>
         </ul>
+
+        <!-- botão WhatsApp no celular (dentro do menu aberto) -->
+        <a class="btn-whatsapp d-lg-none" href="https://wa.me/55SEUNUMEROAQUI" target="_blank" rel="noopener">
+          <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp
+        </a>
+      </div>
+
+      <!-- botão WhatsApp no desktop (à direita) -->
+      <div class="nav-cta d-none d-lg-flex">
+        <a class="btn-whatsapp" href="https://wa.me/55SEUNUMEROAQUI" target="_blank" rel="noopener">
+          <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp
+        </a>
+      </div>
     </nav>
+
     <footer class="footer">
       <div class="container">
         <div class="row">
-          <div class="col">
-            <p>ABCS Informática ©
-              <?php echo date("Y"); ?></br>CNPJ: 00.246.242/0001-60 I.E.: 270.011.138.115
-            </p>
-         
+          <div class="col-6 col-md-3 footer-col">
+            <h4 class="footer-brand">ABCS Informática</h4>
+            <p class="footer-text">Excelência em serviços de TI e desenvolvimento de softwares personalizados.</p>
           </div>
-          <div class="col">
-            <p>Conheça também:
-              <a class="link" href="http://www.santaficha.com.br/" target="_blank">
-                <img src='<?php echo($dot);?>/img/santaficha.png' height='30px' alt='Santa Ficha' />
-              </a>
-              e
-              <a class="link" href="http://www.neolink.com.br/" target="_blank">
-                <img src='<?php echo($dot);?>/img/neolink.png' height='30px' alt='Neolink Telecom' />
-              </a>
-            </p>
+
+          <div class="col-6 col-md-3 footer-col">
+            <h4 class="footer-title">Serviços</h4>
+            <ul class="footer-list">
+              <li><a href="<?php echo($dot);?>/#suporte">Suporte Técnico</a></li>
+              <li><a href="<?php echo($dot);?>/#infraestrutura">Infraestrutura</a></li>
+              <li><a href="<?php echo($dot);?>/#consultoria">Consultoria</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-3 footer-col">
+            <h4 class="footer-title">Links úteis</h4>
+            <ul class="footer-list">
+              <li><a href="<?php echo($dot);?>/ajuda">Central de ajuda</a></li>
+              <li><a href="<?php echo($dot);?>/teamviewer" target="_blank">Suporte remoto</a></li>
+              <li><a href="<?php echo($dot);?>/downloads">Downloads</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-3 footer-col">
+            <h4 class="footer-title">Contato</h4>
+            <ul class="footer-list">
+              <li><i class="fa fa-map-marker" aria-hidden="true"></i> Endereço da empresa, nº - Bairro</li>
+              <li><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:+551938661100">(19) 3866-1100</a></li>
+              <li><i class="fa fa-instagram" aria-hidden="true"></i> <a href="https://www.instagram.com/abcsinformatica/" target="_blank" rel="noopener">@abcsinformatica</a></li>
+            </ul>
           </div>
         </div>
 
+        <div class="footer-bottom">
+          <p>&copy; <?php echo date("Y"); ?> ABCS Informática. Todos os direitos reservados.</p>
+          <p>CNPJ: 00.246.242/0001-60 &middot; I.E.: 270.011.138.115</p>
+        </div>
       </div>
     </footer>
     </div>

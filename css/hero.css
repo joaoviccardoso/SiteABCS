@@ -16,7 +16,7 @@
 
 .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: calc(100vh - 70px);
     display: flex;
     align-items: center;
     font-family: 'Montserrat', Arial, sans-serif;
@@ -41,8 +41,10 @@
 }
 
 .hero-row {
+    width: 100%;
     display: flex;
     align-items: center;
+    gap: 5rem;
 }
 
 /* o Bootstrap 3 injeta pseudo-elementos no .row que atrapalham o flex */
