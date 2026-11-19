@@ -9,6 +9,7 @@
   </title>
 
   <link rel="icon" type="image/png" href="<?php echo($dot);?>/img/favicon.png" />
+  <link rel="preload" as="image" href="<?php echo($dot);?>/img/1LogoABCSInfo.png">
 
   <meta property="og:title" content="ABCS <?php echo($title); ?>">
   <meta property="og:url" content="https://www.abcsinformatica.com.br">
