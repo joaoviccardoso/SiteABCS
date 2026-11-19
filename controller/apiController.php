@@ -1,5 +1,4 @@
 <?php
-@require './const/const.php';
 
 class apiController{
     public function index(){
@@ -22,6 +21,7 @@ class apiController{
         echo('Bem-Vindo a api da ABCS Informática. Parece que você fez uma requisição inválida ou inexistente.');
     }
     public function envio(){//vai mudar aqui
+        require './const/const.php'; // só carrega o banco quando a API é usada
         if($_GET){
             $sistema = $_GET['sistema'];
             $emissor = $_GET['emissor'];

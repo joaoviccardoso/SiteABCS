@@ -141,3 +141,301 @@
         max-width: 260px;
     }
 }
+
+
+/* ==========================================================
+   home.css — seções da home: Expertise, Serviços, Por que a ABCS, CTA
+   ========================================================== */
+
+.home-sec {
+    padding: 80px 0;
+    color: #1f2937;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.sec-heading {
+    margin: 0 0 20px;
+    color: #0f172a;
+    font-family: inherit;
+    font-size: 1.9rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.sec-line {
+    display: block;
+    width: 56px;
+    height: 4px;
+    margin: 0 auto 48px;
+    border-radius: 4px;
+    background: #1e5bd8;
+}
+
+.sec-link {
+    color: #1e5bd8;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.sec-link:hover {
+    color: #1646a8;
+    text-decoration: none;
+}
+
+.sec-link .fa {
+    margin-left: 6px;
+    transition: transform 0.2s;
+}
+
+.sec-link:hover .fa {
+    transform: translateX(4px);
+}
+
+.sec-link-sm {
+    font-size: 0.78rem;
+}
+
+/* selo azul sobre as imagens (20+ anos / 100% foco) */
+.sec-badge {
+    position: absolute;
+    right: -16px;
+    bottom: -20px;
+    padding: 16px 22px;
+    border-radius: 12px;
+    color: #fff;
+    background: #1e5bd8;
+    box-shadow: 0 10px 24px rgba(30, 91, 216, 0.3);
+    text-align: left;
+}
+
+.sec-badge strong {
+    display: block;
+    font-size: 1.9rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.sec-badge span {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.7rem;
+    opacity: 0.9;
+}
+
+/* ---------- Nossa Expertise ---------- */
+.sec-expertise {
+    background: #fff;
+}
+
+.expertise-grid,
+.porque-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+}
+
+.expertise-media,
+.porque-media {
+    position: relative;
+}
+
+/* troque a imagem em img/expertise.png (a cor serve de fundo até lá) */
+.expertise-img {
+    min-height: 340px;
+    border-radius: 16px;
+    background: #d9e2e1 url("../img/expertise.png") center/cover no-repeat;
+}
+
+.expertise-text p {
+    margin: 0 0 20px;
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+/* ---------- Nossos Serviços ---------- */
+.sec-servicos {
+    background: #f1f4fc;
+}
+
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.servico-card {
+    padding: 28px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.servico-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+}
+
+.servico-icon,
+.porque-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    color: #1e5bd8;
+    background: #e8effd;
+    font-size: 1.1rem;
+}
+
+.servico-card h3 {
+    margin: 18px 0 8px;
+    color: #0f172a;
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.servico-card p {
+    margin: 0 0 16px;
+    color: #6b7280;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* ---------- Por que escolher a ABCS ---------- */
+.sec-porque {
+    background: #fff;
+}
+
+/* troque a imagem em img/porque-abcs.jpg (a cor serve de fundo até lá) */
+.porque-img {
+    min-height: 420px;
+    border-radius: 16px;
+    background: #0f2a4a url("../img/porque-abcs.jpg") center/cover no-repeat;
+}
+
+.porque-list {
+    margin: 0;
+    padding: 0;
+}
+
+.porque-list li {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.porque-icon {
+    flex: 0 0 44px;
+}
+
+.porque-list h3 {
+    margin: 0 0 6px;
+    color: #0f172a;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.porque-list p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+/* ---------- CTA ---------- */
+.sec-cta {
+    padding: 40px 0 80px;
+    background: #fff;
+}
+
+.cta-box {
+    padding: 64px 24px;
+    border-radius: 24px;
+    color: #fff;
+    background: linear-gradient(135deg, #1e5bd8 0%, #3ec6f0 100%);
+    box-shadow: 0 20px 40px rgba(30, 91, 216, 0.25);
+    text-align: center;
+}
+
+.cta-box h2 {
+    margin: 0 0 14px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.cta-box p {
+    max-width: 520px;
+    margin: 0 auto 28px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.btn-cta {
+    display: inline-block;
+    padding: 13px 32px;
+    border-radius: 8px;
+    color: #1e5bd8;
+    background: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-cta:hover {
+    color: #1646a8;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.2);
+}
+
+/* ---------- responsivo ---------- */
+@media (max-width: 991px) {
+    .expertise-grid,
+    .porque-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .servicos-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 767px) {
+    .home-sec {
+        padding: 56px 0;
+    }
+
+    .sec-heading {
+        font-size: 1.6rem;
+    }
+
+    .servicos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sec-badge {
+        right: 12px;
+    }
+
+    .expertise-img,
+    .porque-img {
+        min-height: 260px;
+    }
+
+    .cta-box h2 {
+        font-size: 1.5rem;
+    }
+}

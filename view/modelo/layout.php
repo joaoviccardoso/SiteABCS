@@ -196,14 +196,14 @@
         </ul>
 
         <!-- botão WhatsApp no celular (dentro do menu aberto) -->
-        <a class="btn-whatsapp d-lg-none" href="https://wa.me/55SEUNUMEROAQUI" target="_blank" rel="noopener">
+        <a class="btn-whatsapp d-lg-none" href="https://wa.me/1938661100" target="_blank" rel="noopener">
           <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp
         </a>
       </div>
 
       <!-- botão WhatsApp no desktop (à direita) -->
       <div class="nav-cta d-none d-lg-flex">
-        <a class="btn-whatsapp" href="https://wa.me/55SEUNUMEROAQUI" target="_blank" rel="noopener">
+        <a class="btn-whatsapp" href="https://wa.me/1938661100" target="_blank" rel="noopener">
           <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp
         </a>
       </div>
