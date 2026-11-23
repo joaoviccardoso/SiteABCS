@@ -178,6 +178,7 @@ class functionController
             "css/hero.css",
             "css/gerar.css",
             "css/contato.css",
+            "css/sobre.css",
         );
         $buffer = "";
         foreach ($cssFiles as $cssFile) {

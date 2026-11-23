@@ -42,5 +42,11 @@ class pageController{
     include "view/page/mdfe.php";
     unset($layout);
   }
+  public function sobre()
+  {
+    $layout = new layoutModel('sobre', 'sobre, empresa, abcs informática, tecnologia, suporte, infraestrutura de ti', 'Sobre a ABCS Informática : Nossa história, missão, visão e valores');
+    include "view/page/sobre.php";
+    unset($layout);
+  }
  
 }

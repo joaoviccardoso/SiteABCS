@@ -155,6 +155,9 @@ break;*/
     case "abcsmdfe":
         $page->mdfe();
         break;
+    case "sobre":
+        $page->sobre();
+        break;
 
     //Páginas de ajuda
     case "ajuda":

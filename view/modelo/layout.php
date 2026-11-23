@@ -328,7 +328,7 @@
             <a class="nav-link<?php echo $ativo(array('', 'index')); ?>" href="<?php echo($dot);?>/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo($dot);?>/#sobre">Sobre</a>
+            <a class="nav-link<?php echo $ativo(array('sobre', 'quemsomos')); ?>" href="<?php echo($dot);?>/sobre">Sobre</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle<?php echo $ativo(array('premium', 'mosaico', 'citrus', 'nfe', 'sysin', 'sat', 'cte', 'mdfe')); ?>" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sistemas</a>
