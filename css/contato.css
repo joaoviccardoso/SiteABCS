@@ -9,7 +9,7 @@
   --abcs-line: #d9e1ec;
   --abcs-err: #c0392b;
   /* Troque pelas imagens reais do projeto (fachada de vidro / servidor) */
-  --abcs-hero-img: url("/img/contato-hero.jpg");
+  --abcs-hero-img: url("img/HeroContato.png");
 }
 
 .abcs-wrap { 

@@ -5,7 +5,7 @@
       <p>Há mais de uma década transformando o cenário tecnológico de empresas com soluções precisas, suporte humano e infraestrutura de ponta.</p>
     </div>
     <div class="sobre-hero__foto">
-      <img src="/img/sobre-hero.jpg" alt="Escritório moderno com equipamentos de TI" />
+      <img src="/img/EscritórioABCS.png" alt="Escritório moderno com equipamentos de TI" />
     </div>
   </div>
 </section>

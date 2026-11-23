@@ -2,7 +2,7 @@
    Para trocar as cores, mude só as variáveis abaixo. */
 .sobre-hero,.sobre-traj,.sobre-cards,.sobre-cta{
   --sobre-marinho:#131B2E;      /* mesma cor do menu/rodapé do site */
-  --sobre-azul:#131B2E;         /* botões e destaques */
+  --sobre-azul:#0058BE;         /* botões e destaques */
   --sobre-azul-hover:#1e40af;
   --sobre-fundo:#f3f6fc;        /* seções claras */
   --sobre-texto:#1f2a44;

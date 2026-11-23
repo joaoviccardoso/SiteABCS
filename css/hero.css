@@ -245,7 +245,7 @@
 .expertise-img {
     min-height: 340px;
     border-radius: 16px;
-    background: #d9e2e1 url("../img/expertise.png") center/cover no-repeat;
+    background: #d9e2e1 url("../img/expertiseimg.png") center/cover no-repeat;
 }
 
 .expertise-text p {
@@ -316,7 +316,7 @@
 .porque-img {
     min-height: 420px;
     border-radius: 16px;
-    background: #0f2a4a url("../img/porque-abcs.jpg") center/cover no-repeat;
+    background: #0f2a4a url("../img/PorQueEscolherAABCS.png") center/cover no-repeat;
 }
 
 .porque-list {

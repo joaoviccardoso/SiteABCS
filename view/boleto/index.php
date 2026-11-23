@@ -192,7 +192,7 @@
     </div>
 
     <div class="servico__foto">
-      <img src="/img/boleto-hero.jpg" alt="Pessoa conferindo um boleto com notebook e calculadora" />
+      <img src="../img/GerarBoleto.png" alt="Pessoa conferindo um boleto com notebook e calculadora" />
     </div>
   </div>
 

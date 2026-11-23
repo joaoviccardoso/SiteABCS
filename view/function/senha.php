@@ -21,7 +21,7 @@
     </div>
 
     <div class="servico__foto">
-      <img src="/img/senha-hero.jpg" alt="Pessoa usando celular com cadeado de segurança diante de um notebook" />
+      <img src="/img/GerarSenha.png" alt="Pessoa usando celular com cadeado de segurança diante de um notebook" />
     </div>
   </div>
 </section>

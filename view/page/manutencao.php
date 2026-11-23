@@ -27,7 +27,7 @@ $servicos = [
 <main class="mnt">
 
     <!-- HERO -->
-    <section class="mnt-hero" style="background-image:linear-gradient(180deg,rgba(11,23,48,.82),rgba(11,23,48,.92)),url('<?= $dot ?>/img/data-center.jpg')">
+    <section class="mnt-hero" style="background-image:linear-gradient(180deg,rgba(11,23,48,.82),rgba(11,23,48,.92)),url('<?= $dot ?>/img/HeroManutencao.png')">
         <div class="mnt-container">
             <h1>Manutenção de Equipamentos para sua Empresa</h1>
             <p>Cuidamos dos seus computadores e impressoras para evitar problemas e manter tudo funcionando corretamente. Oferecemos suporte rápido e eficiente para que sua empresa não pare e continue produtiva no dia a dia.</p>
@@ -57,7 +57,7 @@ $servicos = [
             </div>
 
             <div class="mnt-servicos__img">
-                <img src="<?= $dot ?>/img/manutencao-placa.jpg" alt="Técnico realizando manutenção em placa de computador" loading="lazy">
+                <img src="<?= $dot ?>/img/imgManutencao.png" alt="Técnico realizando manutenção em placa de computador" loading="lazy">
             </div>
         </div>
     </section>

@@ -54,7 +54,7 @@ $sistemas = [
                 <a class="sis-btn" href="<?= htmlspecialchars($link_contato) ?>" target="_blank" rel="noopener">Fale conosco</a>
             </div>
             <div class="sis-hero__img">
-                <img src="<?= $dot ?>/img/sistemas-notebook.jpg" alt="Notebook exibindo um sistema de gestão">
+                <img src="<?= $dot ?>/img/DashboarddeGestao.png" alt="Notebook exibindo um sistema de gestão">
             </div>
         </div>
     </section>
