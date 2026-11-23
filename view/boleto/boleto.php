@@ -102,6 +102,8 @@ header('Content-Type: text/html; charset=utf-8');
       $dadosboleto["endereco1"] = "$reg[endereco], $reg[numero] - $reg[complemento] - $reg[bairro]";
       $dadosboleto["endereco2"] = "$reg[cidade] - $reg[estado] -  $reg[cep]";
       $dadosboleto["demonstrativo1"] = "";
+      $dadosboleto["demonstrativo2"] = "";
+      $dadosboleto["demonstrativo3"] = "";
       if ($hoje<$reg["datavenc"])
         $dadosboleto["instrucoes1"] = "- Após o vencimento cobrar multa de R$$valormulta e juros de R$$valorjuros ao dia";
       else

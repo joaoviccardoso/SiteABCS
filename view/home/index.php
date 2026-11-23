@@ -1,4 +1,4 @@
-<div id='pagina'>
+<div id='pagina1'>
     <section id="gradient" class="hero-background hero">
         <div class="container">
             <div class="hero-row">
@@ -123,7 +123,7 @@
             </div>
         </div>
     </section>
-
+</div>
 
     <!--
     <div class='container text-center'>
@@ -268,7 +268,7 @@
         </div>
     </div>
 </div> -->
-</div><!-- fecha #pagina (o fechamento original ficava dentro do comentário acima) -->
+<!-- fecha #pagina (o fechamento original ficava dentro do comentário acima) -->
 
 <!--<script async>
     var colors = new Array(

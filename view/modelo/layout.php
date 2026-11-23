@@ -41,6 +41,14 @@
         replacement.innerHTML = addStylesNode.textContent;
         document.body.appendChild(replacement)
         addStylesNode.parentElement.removeChild(addStylesNode);
+
+        // CORREÇÃO: quando o CSS adiado terminar de carregar, recalcula o rodapé
+        var links = replacement.querySelectorAll('link[rel="stylesheet"]');
+        for (var i = 0; i < links.length; i++) {
+          links[i].addEventListener('load', function () {
+            if (typeof ajustaRodape === 'function') ajustaRodape();
+          });
+        }
       };
       var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
           window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
@@ -54,6 +62,18 @@
     function ajustaRodape() {
       var f = document.querySelector('.footer');
       if (f) document.body.style.paddingBottom = f.offsetHeight + 'px';
+    }
+
+    // NOVO: observa o footer e reajusta quando o tamanho dele mudar
+    // (CSS adiado, fontes, resize, quebra de linha etc.)
+    var rodapeObservado = false;
+    function observaRodape() {
+      var f = document.querySelector('.footer');
+      if (!f || rodapeObservado) return;
+      rodapeObservado = true;
+      if (window.ResizeObserver) {
+        new ResizeObserver(ajustaRodape).observe(f);
+      }
     }
 
     // Progresso estimado a partir do carregamento dos recursos encontrados no HTML.
@@ -162,6 +182,7 @@
         if (pagina) pagina.style.display = 'block';
 
         ajustaRodape();
+        observaRodape();   // CORREÇÃO: mantém o padding sempre sincronizado com o footer
         pre.classList.add('saindo');
 
         setTimeout(function () {
@@ -347,13 +368,14 @@
       </div>
 
       <!-- botão WhatsApp no desktop (à direita) -->
-      <div class="nav-cta d-none d-lg-flex">
-        <a class="btn-whatsapp d-lg-none"
-          href="<?php echo $linkWhatsApp; ?>"
-          target="_blank"
-          rel="noopener">
-            <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp
-        </a>
+        <div class="nav-cta d-none d-lg-flex">
+            <a class="btn-whatsapp"
+              href="<?php echo $linkWhatsApp; ?>"
+              target="_blank"
+              rel="noopener">
+                <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp
+            </a>
+        </div>
       </div>
     </nav>
 

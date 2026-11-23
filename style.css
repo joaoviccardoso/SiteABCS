@@ -381,10 +381,6 @@ button.accordion.active:after {
     }
 }
 
-#pagina {
-    margin-bottom: 50px;
-}
-
 .card:hover {
     background-color: #ccccff;
     transition: 0.5s;

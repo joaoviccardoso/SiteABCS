@@ -176,7 +176,7 @@
 /* ---------- conteúdo ---------- */
 .main-content {
     padding-top: 60px;
-    padding-bottom: 60px;
+    padding-bottom: 0px;
 }
 
 /* ---------- footer ---------- */
@@ -187,7 +187,6 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    margin-top: 0;
     padding: 48px 0 0;
     background: #131B2E;
     color: #aab4c8;
