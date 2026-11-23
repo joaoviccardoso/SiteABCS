@@ -48,5 +48,17 @@ class pageController{
     include "view/page/sobre.php";
     unset($layout);
   }
+  public function manutencao()
+  {
+    $layout = new layoutModel('manutencao', 'manutenção de computadores, manutenção de impressoras, upgrade de componentes, suporte técnico, abcs, infraestrutura de ti', 'Manutenção de Equipamentos para sua Empresa : Computadores, Impressoras e Upgrades');
+    include "view/page/manutencao.php";
+    unset($layout);
+  }
+  public function sistemas()
+  {
+    $layout = new layoutModel('sistemas', 'sistemas para empresas, gerenciador comercial, emissor de nfe, abcs, sistemas', 'Sistemas : Soluções digitais para a gestão do seu negócio');
+    include "view/page/sistemas.php";
+    unset($layout);
+  }
  
 }

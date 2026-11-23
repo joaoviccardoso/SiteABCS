@@ -1,0 +1,89 @@
+/* css/sistemas.css — página Sistemas (escopo .sis) */
+.sis{
+  --navy:#0b1730; --blue:#0a6fc2; --blue-2:#0b8fd6;
+  --ink:#16233b; --muted:#5b6b83; --line:#e3e9f2;
+  font-family:'Montserrat',Arial,sans-serif; color:var(--ink);
+}
+.sis *{box-sizing:border-box}
+.sis-container{width:100%;max-width:1140px;margin:0 auto;padding:0 20px}
+
+.sis-btn{
+  display:inline-block;padding:14px 28px;border-radius:6px;color:#fff;text-decoration:none;
+  font-weight:600;font-size:15px;background:linear-gradient(90deg,var(--blue),var(--blue-2));
+  transition:filter .2s;
+}
+.sis-btn:hover{filter:brightness(1.1);color:#fff;text-decoration:none}
+.sis-btn:focus-visible,.sis-card:focus-visible{outline:3px solid #9bd3ff;outline-offset:3px}
+
+/* hero */
+.sis-hero{padding:80px 0;background:linear-gradient(135deg,#f3f8ff,#e4f0fc)}
+.sis-hero__grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.sis-badge{
+  display:inline-block;padding:5px 12px;border-radius:999px;background:#d9ebfa;color:var(--blue);
+  font-size:12px;font-weight:600;margin-bottom:18px;
+}
+.sis-hero h1{font-size:clamp(30px,4.6vw,42px);line-height:1.15;font-weight:700;margin:0 0 18px;max-width:480px}
+.sis-hero p{color:var(--muted);line-height:1.7;max-width:460px;margin:0 0 28px}
+.sis-hero__img img{
+  width:100%;height:auto;max-height:420px;object-fit:cover;display:block;
+  border-radius:20px;box-shadow:0 20px 40px rgba(11,23,48,.2);background:var(--navy);
+}
+
+/* lista (bento) */
+.sis-lista{padding:72px 0;background:#eef3fd}
+.sis-titulo{text-align:center;font-size:clamp(24px,3.4vw,30px);font-weight:700;margin:0 0 48px;position:relative;padding-bottom:18px}
+.sis-titulo::after{content:"";position:absolute;left:50%;bottom:0;width:44px;height:3px;border-radius:3px;background:var(--blue);transform:translateX(-50%)}
+.sis-cards{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.sis-span-4{grid-column:span 4}
+.sis-span-5{grid-column:span 5}
+.sis-span-7{grid-column:span 7}
+.sis-span-8{grid-column:span 8}
+.sis-card{
+  display:flex;overflow:hidden;border-radius:8px;text-decoration:none;
+  background:#fff;color:var(--ink);box-shadow:0 4px 14px rgba(15,33,69,.07);
+  transition:box-shadow .2s;
+}
+.sis-card:hover{box-shadow:0 10px 24px rgba(15,33,69,.16);color:var(--ink);text-decoration:none}
+.sis-card__corpo{flex:1;display:flex;flex-direction:column;gap:10px;padding:28px 30px}
+.sis-card__logo{display:block;width:44px;height:44px}
+.sis-card__logo img{width:100%;height:100%;object-fit:contain;display:block}
+.sis-card__logo--icone{
+  display:flex;align-items:center;justify-content:center;border-radius:10px;
+  background:#e6f1fb;color:var(--blue);font-size:20px;
+}
+.sis-card h3{font-size:17px;font-weight:700;line-height:1.35;margin:6px 0 0}
+.sis-card p{font-size:13.5px;line-height:1.65;color:var(--muted);margin:0;flex:1}
+.sis-card__link{font-size:13px;font-weight:600;color:var(--blue)}
+
+.sis-card--foto .sis-card__corpo{flex:1 1 54%}
+.sis-card__foto{flex:0 0 46%;width:46%;object-fit:cover;display:block}
+
+.sis-card--escuro{background:#151c2f;color:#fff}
+.sis-card--escuro:hover{color:#fff}
+.sis-card--escuro p{color:#8b97b0}
+.sis-card--escuro .sis-card__logo--icone{background:rgba(255,255,255,.1);color:#fff}
+.sis-card--escuro .sis-card__link{color:#7cc4f5}
+
+/* CTA */
+.sis-cta{padding:0 0 80px;background:#eef3fd}
+.sis-cta .sis-container{padding-top:0}
+.sis-cta__box{
+  background:var(--navy);color:#fff;text-align:center;border-radius:20px;padding:64px 24px;
+}
+.sis-cta h2{font-size:clamp(24px,3.4vw,32px);font-weight:700;margin:0 0 12px}
+.sis-cta p{max-width:480px;margin:0 auto 28px;color:#c8d3e6;line-height:1.7}
+
+/* responsivo */
+@media (max-width:860px){
+  .sis-hero{padding:56px 0}
+  .sis-hero__grid{grid-template-columns:1fr;gap:32px}
+  .sis-lista{padding:56px 0}
+  .sis-cards{grid-template-columns:1fr}
+  .sis-cards .sis-card{grid-column:auto}
+  .sis-card--foto{flex-direction:column}
+  .sis-card__foto{flex:none;width:100%;height:200px}
+  .sis-card__corpo{padding:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  .sis-card,.sis-btn{transition:none}
+}

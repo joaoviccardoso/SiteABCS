@@ -330,19 +330,8 @@
           <li class="nav-item">
             <a class="nav-link<?php echo $ativo(array('sobre', 'quemsomos')); ?>" href="<?php echo($dot);?>/sobre">Sobre</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle<?php echo $ativo(array('premium', 'mosaico', 'citrus', 'nfe', 'sysin', 'sat', 'cte', 'mdfe')); ?>" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sistemas</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown04">
-              <a class="dropdown-item" href="<?php echo($dot);?>/premium">ABCS Premium</a>
-              <a class="dropdown-item" href="<?php echo($dot);?>/mosaico">ABCS Mosaico</a>
-              <a class="dropdown-item" href="<?php echo($dot);?>/citrus">ABCS Citrus</a>
-              <a class="dropdown-item" href="<?php echo($dot);?>/nfe">ABCS NFe</a>
-              <a class="dropdown-item" href="<?php echo($dot);?>/sysin">ABCS SysIn</a>
-              <a class="dropdown-item" href="<?php echo($dot);?>/sat">ABCS SAT</a>
-              <a class="dropdown-item" href="<?php echo($dot);?>/cte">ABCS CTe</a>
-              <a class="dropdown-item" href="<?php echo($dot);?>/mdfe">ABCS MDFe</a>
-              <a class="dropdown-item" href="http://www.santaficha.com.br/" target="_blank">SANTA FICHA</a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link<?php echo $ativo(array('sistemas', 'premium', 'mosaico', 'citrus', 'nfe', 'sysin', 'sat', 'cte', 'mdfe')); ?>" href="<?php echo($dot);?>/sistemas">Sistemas</a>
           </li>
           <li class="nav-item">
             <a class="nav-link<?php echo $ativo(array('senha', 'acesso')); ?>" href="<?php echo($dot);?>/senha">Senha</a>
@@ -351,7 +340,7 @@
             <a class="nav-link<?php echo $ativo('boleto'); ?>" href="<?php echo($dot);?>/boleto">Boleto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo($dot);?>/#manutencao">Manutenção</a>
+            <a class="nav-link<?php echo $ativo(array('manutencao')); ?>" href="<?php echo($dot);?>/manutencao">Manutenção</a>
           </li>
           <li class="nav-item">
             <a class="nav-link<?php echo $ativo('contato'); ?>" href="<?php echo($dot);?>/contato">Contato</a>

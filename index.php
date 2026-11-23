@@ -158,6 +158,12 @@ break;*/
     case "sobre":
         $page->sobre();
         break;
+    case "manutencao":
+        $page->manutencao();
+        break;
+    case "sistemas":
+        $page->sistemas();
+        break;
 
     //Páginas de ajuda
     case "ajuda":

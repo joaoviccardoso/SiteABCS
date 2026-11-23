@@ -179,6 +179,8 @@ class functionController
             "css/gerar.css",
             "css/contato.css",
             "css/sobre.css",
+            "css/manutencao.css",
+            "css/sistemas.css",
         );
         $buffer = "";
         foreach ($cssFiles as $cssFile) {
