@@ -13,7 +13,7 @@
 <section class="sobre-traj">
   <div class="sobre__wrap sobre-traj__grid">
     <div>
-      <p class="sobre-traj__eyebrow">Nossa trajetória</p>
+      <p class="sobre-traj__eyebrow nossaTrajetoria">Nossa trajetória</p>
       <h2>Uma história de evolução contínua.</h2>
     </div>
     <div>

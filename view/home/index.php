@@ -7,8 +7,8 @@
                     <p class="hero-subtitle">sistemas + suporte + manutenção</p>
 
                     <div class="hero-cta">
-                        <a href="#solucoes" class="btn-hero btn-hero-primary">Ver soluções</a>
-                        <a href="#gerar-senha" target="_blank" rel="noopener" class="btn-hero btn-hero-outline">Gerar a Senha</a>
+                        <a href="sistemas" class="btn-hero btn-hero-primary">Ver soluções</a>
+                        <a href="senha" target="_blank" rel="noopener" class="btn-hero btn-hero-outline">Gerar a Senha</a>
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@
                 <div class="expertise-text">
                     <h2 class="sec-heading">Nossa Expertise</h2>
                     <p>A ABCS Informática ajuda sua empresa a organizar o dia a dia com tecnologia. Oferecemos sistemas de gestão e emissão de notas fiscais (NF-e e NFC-e), facilitando o controle de vendas e finanças. Também realizamos manutenção de computadores e impressoras, garantindo que tudo funcione bem. Com a ABCS, você tem suporte, praticidade e mais tranquilidade para cuidar do seu negócio.</p>
-                    <a class="sec-link" href="#porque-abcs">Conheça a empresa <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    <a class="sec-link" href="./sobre">Conheça a empresa <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -51,14 +51,14 @@
                     <span class="servico-icon"><i class="fa fa-desktop" aria-hidden="true"></i></span>
                     <h3>Sistemas</h3>
                     <p>Software sob medida para gestão eficiente do seu negócio.</p>
-                    <a class="sec-link sec-link-sm" href="./contato/Sistemas">Saiba mais <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    <a class="sec-link sec-link-sm" href="./sistemas">Saiba mais <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                 </article>
 
                 <article class="servico-card" id="manutencao">
                     <span class="servico-icon"><i class="fa fa-wrench" aria-hidden="true"></i></span>
                     <h3>Manutenção</h3>
                     <p>Conserto e atualização preventiva de computadores e servidores.</p>
-                    <a class="sec-link sec-link-sm" href="./contato/Manuten%C3%A7%C3%A3o">Saiba mais <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    <a class="sec-link sec-link-sm" href="./manutencao">Saiba mais <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                 </article>
 
                 <article class="servico-card" id="suporte">

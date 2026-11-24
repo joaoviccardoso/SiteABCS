@@ -175,7 +175,7 @@
 <section class="servico" id="pagina">
   <div class="servico__grid">
     <div class="servico__conteudo">
-      <p class="servico__eyebrow">Soluções corporativas</p>
+      <p class="sis-badge">Soluções corporativas</p>
       <h1>Emissão de Boleto OnLine</h1>
       <p class="servico__texto">Informe o CNPJ ou CPF do titular do cadastro na ABCS Informática e clique no botão "Listar Boletos".</p>
 

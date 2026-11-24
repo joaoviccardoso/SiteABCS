@@ -2,7 +2,7 @@
 // view/page/manutencao.php — conteúdo da página (nav/footer vêm do layoutModel)
 $dot = isset($dot) ? $dot : '';
 
-$whatsapp = '5519999999999'; // TROCAR: DDI + DDD + número
+$whatsapp = '551938661100'; // TROCAR: DDI + DDD + número
 $link_atendimento = 'https://wa.me/' . $whatsapp . '?text=' . rawurlencode('Olá! Gostaria de solicitar atendimento de manutenção.');
 
 $servicos = [

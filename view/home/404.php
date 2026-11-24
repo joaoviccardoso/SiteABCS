@@ -1,15 +1,25 @@
-<div class='text-center' id='pagina'>
-  <h1>Erro 404</h1>
-  <div class="p-3 mb-2 bg-info text-white">
-    <h1>
+<div class="text-center" id="pagina404">
+  <div class="erro404">
+
+    <div class="erro404-icone">
       <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-    </h1>
-    <p>A página que você procura não existe ou está indisponível no momento</p>
-    <p>Clique
-      <a href="../">aqui</a> para voltar a navegar</p>
-    <div>
-      <br/>
     </div>
+
+    <h1 class="erro404-codigo">404</h1>
+    <h2 class="erro404-titulo">Ops! Página não encontrada</h2>
+
+    <p class="erro404-texto">
+      A página que você procura não existe ou está indisponível no momento.
+    </p>
+
+    <div class="erro404-acoes">
+      <a href="../" class="btn-erro404 btn-erro404-primario">
+        <i class="fa fa-home" aria-hidden="true"></i> Voltar à loja
+      </a>
+      <a href="javascript:history.back()" class="btn-erro404 btn-erro404-secundario">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Página anterior
+      </a>
+    </div>
+
   </div>
 </div>
-  

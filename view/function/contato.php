@@ -17,7 +17,7 @@
         <li>
           <span class="abcs-ico" aria-hidden="true"><i class="fa fa-whatsapp"></i></span>
           <span><small>WhatsApp</small>
-            <a href="https://wa.me/5519999990000" target="_blank" rel="noopener">(19) 99999-0000</a></span>
+            <a href="https://wa.me/551938661100" target="_blank" rel="noopener">(19) 3866-1100</a></span>
         </li>
         <li>
           <span class="abcs-ico" aria-hidden="true"><i class="fa fa-phone"></i></span>

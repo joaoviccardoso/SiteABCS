@@ -1,13 +1,18 @@
 <?php
-// view/page/nfe.php — Página do sistema ABCS NFe (nav/footer vêm do layoutModel)
-// Usa o mesmo CSS do Premium (css/premium.css, escopo .prm). Só mudam textos, logo e funcionalidades.
-$dot  = isset($dot) ? $dot : '';
+// view/page/citrus.php
+$dot = isset($dot) ? $dot : '';
+
+// Caminho da imagem relativo à raiz pública do site (pasta onde fica "img/")
+$logo_rel = '/img/LogoNFeGrande.png';
+
+// Raiz no disco. Ajuste conforme a estrutura do projeto (veja as opções abaixo)
 $raiz = dirname(__DIR__, 2);
 
-$link_demo = $dot . '/contato/' . rawurlencode('Quero o NFe em minha empresa');
+// Caminho físico do arquivo e verificação
+$logo_arquivo = $raiz . $logo_rel;
+$tem_logo     = file_exists($logo_arquivo);
 
-$logo_arquivo = 'img/sistemas/nfe.png';
-$tem_logo     = file_exists($raiz . '/' . $logo_arquivo);
+$link_demo = $dot . '/contato/' . rawurlencode('Quero o NFe em minha empresa');
 
 $funcionalidades = [
     ['fa-file-text-o', 'Emitir Notas Fiscais', 'Emita suas notas fiscais com simplicidade e agilidade.'],
@@ -33,7 +38,7 @@ $grid_cls = (count($funcionalidades) === 4) ? ' prm-grid--2' : '';
             </div>
             <div class="prm-hero__logo">
                 <?php if ($tem_logo): ?>
-                    <img src="<?= $dot . '/' . $logo_arquivo ?>" alt="Logo ABCS NFe">
+                    <img src="<?= $dot . $logo_rel ?>" alt="Logo ABCS NFe">
                 <?php else: ?>
                     <span class="prm-hero__icone"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
                 <?php endif; ?>

@@ -400,6 +400,152 @@
     box-shadow: 0 10px 22px rgba(15, 23, 42, 0.2);
 }
 
+#pagina404 {
+  padding: 40px 15px;
+}
+
+.erro404 {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 45px 30px 40px;
+  background: #fff;
+  border-top: 6px solid #17a2b8; /* cor do bg-info */
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  animation: erro404-entrada 0.5s ease-out;
+}
+
+.erro404-icone {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 10px;
+  line-height: 80px;
+  font-size: 42px;
+  color: #fff;
+  background: #17a2b8;
+  border-radius: 50%;
+  animation: erro404-pulso 2.5s ease-in-out infinite;
+}
+
+.erro404-codigo {
+  margin: 10px 0 0;
+  font-size: 96px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 4px;
+  color: #17a2b8;
+}
+
+.erro404-titulo {
+  margin: 10px 0 15px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+.erro404-texto {
+  margin-bottom: 25px;
+  font-size: 16px;
+  color: #6c757d;
+}
+
+/* Busca */
+.erro404-busca {
+  display: flex;
+  max-width: 420px;
+  margin: 0 auto 25px;
+  border: 2px solid #17a2b8;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.erro404-busca input {
+  flex: 1;
+  padding: 10px 18px;
+  border: 0;
+  outline: none;
+  font-size: 15px;
+}
+
+.erro404-busca button {
+  padding: 0 20px;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  background: #17a2b8;
+  transition: background 0.2s;
+}
+
+.erro404-busca button:hover {
+  background: #117a8b;
+}
+
+/* Botões */
+.erro404-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn-erro404 {
+  display: inline-block;
+  padding: 11px 24px;
+  font-weight: 600;
+  text-decoration: none !important;
+  border-radius: 50px;
+  transition: all 0.2s ease;
+}
+
+.btn-erro404 i {
+  margin-right: 6px;
+}
+
+.btn-erro404-primario {
+  color: #fff;
+  background: #17a2b8;
+  border: 2px solid #17a2b8;
+}
+
+.btn-erro404-primario:hover {
+  color: #fff;
+  background: #117a8b;
+  border-color: #117a8b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(23, 162, 184, 0.4);
+}
+
+.btn-erro404-secundario {
+  color: #17a2b8;
+  background: transparent;
+  border: 2px solid #17a2b8;
+}
+
+.btn-erro404-secundario:hover {
+  color: #fff;
+  background: #17a2b8;
+  transform: translateY(-2px);
+}
+
+/* Animações */
+@keyframes erro404-entrada {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes erro404-pulso {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(23, 162, 184, 0.5); }
+  50%      { box-shadow: 0 0 0 15px rgba(23, 162, 184, 0); }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .erro404 { padding: 30px 18px; }
+  .erro404-codigo { font-size: 72px; }
+  .erro404-titulo { font-size: 20px; }
+  .btn-erro404 { width: 100%; }
+}
+
 /* ---------- responsivo ---------- */
 @media (max-width: 991px) {
     .expertise-grid,

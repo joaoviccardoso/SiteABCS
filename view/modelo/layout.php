@@ -292,8 +292,8 @@
 </style>
 <div id="preloader_3">
   <div class="loader-logo">
-    <img class="logo-base" src="<?php echo($dot);?>/img/1LogoABCSInfo.png" alt="">
-    <img class="logo-cor" src="<?php echo($dot);?>/img/1LogoABCSInfo.png" alt="ABCS Informática">
+    <img class="logo-base" src="<?php echo($dot);?>/img/LogoAbcsAzulGrande.png" alt="">
+    <img class="logo-cor" src="<?php echo($dot);?>/img/LogoAbcsAzulGrande.png" alt="ABCS Informática">
   </div>
   <div class="loader-barra"><span></span></div>
   <div class="loader-percent" id="loader-percent">5%</div>

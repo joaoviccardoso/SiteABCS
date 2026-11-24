@@ -1,7 +1,7 @@
 <section class="servico" id="pagina4">
   <div class="servico__grid">
     <div class="servico__conteudo">
-      <p class="servico__eyebrow">Soluções corporativas</p>
+      <p class="sis-badge">Soluções corporativas</p>
       <h1>Acesse sua senha do sistema ABCS</h1>
       <p class="servico__texto">Informe o número de série para gerar ou recuperar sua senha de acesso com segurança.</p>
 

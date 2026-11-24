@@ -1,13 +1,18 @@
 <?php
-// view/page/mosaico.php — Página do sistema ABCS MOSAICO (nav/footer vêm do layoutModel)
-// Usa o mesmo CSS do Premium (css/premium.css, escopo .prm). Só mudam textos, logo e funcionalidades.
-$dot  = isset($dot) ? $dot : '';
+// view/page/citrus.php
+$dot = isset($dot) ? $dot : '';
+
+// Caminho da imagem relativo à raiz pública do site (pasta onde fica "img/")
+$logo_rel = '/img/LogoMosaicoGrande.png';
+
+// Raiz no disco. Ajuste conforme a estrutura do projeto (veja as opções abaixo)
 $raiz = dirname(__DIR__, 2);
 
-$link_demo = $dot . '/contato/' . rawurlencode('Quero o Mosaico em meu motel');
+// Caminho físico do arquivo e verificação
+$logo_arquivo = $raiz . $logo_rel;
+$tem_logo     = file_exists($logo_arquivo);
 
-$logo_arquivo = 'img/sistemas/mosaico.png';
-$tem_logo     = file_exists($raiz . '/' . $logo_arquivo);
+$link_demo = $dot . '/contato/' . rawurlencode('Quero o Mosaico em meu motel');
 
 $funcionalidades = [
     ['fa-eye', 'Fácil visualização das suítes alugadas', 'Veja rapidamente a situação de cada suíte.'],
@@ -37,7 +42,7 @@ $grid_cls = (count($funcionalidades) === 4) ? ' prm-grid--2' : '';
             </div>
             <div class="prm-hero__logo">
                 <?php if ($tem_logo): ?>
-                    <img src="<?= $dot . '/' . $logo_arquivo ?>" alt="Logo ABCS MOSAICO">
+                    <img src="<?= $dot . $logo_rel ?>" alt="Logo ABCS Mosaico">
                 <?php else: ?>
                     <span class="prm-hero__icone"><i class="fa fa-bed" aria-hidden="true"></i></span>
                 <?php endif; ?>

@@ -1,15 +1,14 @@
 <?php
 // view/page/premium.php — Página do sistema ABCS Premium (nav/footer vêm do layoutModel)
+$logo_rel     = '/img/LogoPremiumGrande.png';   // ajuste para o caminho real
 $dot  = isset($dot) ? $dot : '';
 $raiz = dirname(__DIR__, 2);
-
+$logo_premium = file_exists($raiz . $logo_rel);
 // Mesmo padrão das outras páginas: a mensagem vai na URL de /contato
 $link_demo   = $dot . '/contato/' . rawurlencode('Quero uma demonstração do ABCS Premium');
 $link_planos = $dot . '/contato/' . rawurlencode('Quero conhecer os planos do ABCS Premium');
 
 $empresas = '+800'; // CONFERIR o número. Deixe '' para esconder a linha de prova social.
-
-$logo_premium = file_exists($raiz . '/img/sistemas/premium.png');
 
 $funcionalidades = [
     ['fa-archive',       'Controle de estoque',          'Gestão precisa de entradas e saídas, com atualização automática de reposição e histórico completo.'],
@@ -42,7 +41,7 @@ $funcionalidades = [
             </div>
             <div class="prm-hero__logo">
                 <?php if ($logo_premium): ?>
-                    <img src="<?= $dot ?>/img/sistemas/premium.png" alt="Logo ABCS Premium">
+                    <img src="<?= $dot . $logo_rel ?>" alt="Logo ABCS Premium">
                 <?php else: ?>
                     <span class="prm-hero__icone"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                 <?php endif; ?>
