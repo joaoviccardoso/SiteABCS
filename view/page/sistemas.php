@@ -26,8 +26,7 @@ $sistemas = [
     ['span' => 5, 'rota' => 'mosaico', 'logo' => 'mosaico', 'icone' => 'fa-bed', 'destaque' => true,
      'titulo' => 'ABCS Mosaico – Automação para Motéis',
      'texto'  => 'Gerencie reservas, consumo e operações do seu motel com mais organização, agilidade e controle total.'],
-    ['span' => 7, 'link' => 'https://wa.me/' . $whatsapp . '?text=' . rawurlencode('Olá! Gostaria de saber mais sobre o ABCS Restaurante.'),
-     'logo' => 'restaurante', 'icone' => 'fa-cutlery', 'destaque' => false,
+    ['span' => 7, 'rota' => 'restaurante1', 'logo' => 'restaurante', 'icone' => 'fa-cutlery', 'destaque' => false,
      'titulo' => 'ABCS Restaurante – Sistema para Restaurantes',
      'texto'  => 'Controle mesas, pedidos e consumo com facilidade, além de emitir cupons fiscais de forma rápida e organizada.'],
 

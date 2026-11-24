@@ -1,4 +1,9 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 header('Content-Type: text/html; charset=utf-8');
 require_once "controller/homeController.php";
 require_once "controller/functionController.php";
@@ -144,6 +149,9 @@ break;*/
 
     case "sysin":
         $page->sysin();
+        break;
+    case "restaurante1":
+        $page->restaurante1();
         break;
     case "abcssysin":
         $page->sysin();

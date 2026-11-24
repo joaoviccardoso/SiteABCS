@@ -1,0 +1,78 @@
+/* css/premium.css — página ABCS Premium (escopo .prm) */
+.prm{
+  --navy:#0b1730; --blue:#0a6fc2; --blue-2:#0b8fd6;
+  --ink:#16233b; --muted:#5b6b83; --line:#e3e9f2;
+  font-family:'Montserrat',Arial,sans-serif; color:var(--ink);
+}
+.prm *{box-sizing:border-box}
+.prm-container{width:100%;max-width:1140px;margin:0 auto;padding:0 20px}
+
+/* botões */
+.prm-btn{
+  display:inline-block;padding:13px 26px;border-radius:6px;color:#fff;text-decoration:none;
+  font-weight:600;font-size:14px;background:linear-gradient(90deg,var(--blue),var(--blue-2));
+  border:2px solid transparent;transition:filter .2s,background .2s;
+}
+.prm-btn:hover{filter:brightness(1.1);color:#fff;text-decoration:none}
+.prm-btn--contorno{background:#fff;color:var(--blue);border-color:var(--blue)}
+.prm-btn--contorno:hover{background:#eaf4fc;color:var(--blue);filter:none}
+.prm-btn:focus-visible{outline:3px solid #9bd3ff;outline-offset:3px}
+
+/* hero */
+.prm-hero{padding:72px 0;background:linear-gradient(135deg,#f3f8ff,#e4f0fc)}
+.prm-hero__grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.prm-badge{
+  display:inline-block;padding:5px 12px;border-radius:999px;background:#d9ebfa;color:var(--blue);
+  font-size:12px;font-weight:600;margin-bottom:16px;
+}
+.prm-hero h1{font-size:clamp(32px,5vw,44px);font-weight:700;line-height:1.1;margin:0 0 18px}
+.prm-hero p{color:var(--muted);line-height:1.7;max-width:480px;margin:0 0 26px}
+.prm-hero__acoes{display:flex;flex-wrap:wrap;gap:12px}
+.prm-hero p.prm-prova{margin:22px 0 0;font-size:13px;color:var(--muted)}
+.prm-prova i{color:var(--blue);margin-right:4px}
+.prm-prova strong{color:var(--ink)}
+.prm-hero__logo{display:flex;justify-content:center}
+.prm-hero__logo img{width:100%;max-width:340px;height:auto;display:block;border-radius:12px}
+.prm-hero__icone{
+  width:220px;height:220px;border-radius:24px;background:#fff;color:var(--blue);font-size:88px;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 16px 36px rgba(11,23,48,.15);
+}
+
+/* funcionalidades */
+.prm-func{padding:72px 0;background:#fff}
+.prm-titulo{
+  text-align:center;font-size:clamp(22px,3.2vw,28px);font-weight:700;margin:0 0 44px;
+  position:relative;padding-bottom:18px;
+}
+.prm-titulo::after{content:"";position:absolute;left:50%;bottom:0;width:44px;height:3px;border-radius:3px;background:var(--blue);transform:translateX(-50%)}
+.prm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.prm-card{
+  padding:26px;border:1px solid var(--line);border-radius:10px;background:#fff;
+  box-shadow:0 4px 14px rgba(15,33,69,.05);
+}
+.prm-card__icone{
+  width:36px;height:36px;border-radius:8px;border:1px solid #cfe3f5;background:#f2f8fe;color:var(--blue);
+  display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:16px;
+}
+.prm-card h3{font-size:15px;font-weight:700;margin:0 0 8px}
+.prm-card p{font-size:13px;line-height:1.65;color:var(--muted);margin:0}
+
+/* CTA */
+.prm-cta{padding:0 0 80px;background:#fff}
+.prm-cta__box{background:var(--navy);color:#fff;text-align:center;border-radius:20px;padding:64px 24px}
+.prm-cta h2{font-size:clamp(24px,3.4vw,32px);font-weight:700;line-height:1.25;margin:0 auto 14px;max-width:420px}
+.prm-cta p{max-width:520px;margin:0 auto 28px;color:#c8d3e6;line-height:1.7}
+
+/* responsivo */
+@media (max-width:900px){
+  .prm-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:700px){
+  .prm-hero{padding:48px 0}
+  .prm-hero__grid{grid-template-columns:1fr;gap:32px}
+  .prm-hero__logo{order:-1}
+  .prm-hero__logo img{max-width:200px}
+  .prm-func{padding:56px 0}
+  .prm-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.prm-btn{transition:none}}

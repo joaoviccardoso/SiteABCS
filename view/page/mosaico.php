@@ -1,83 +1,75 @@
-<div id='pagina'>
-  <div class='container produto row-eq-height'>
-    <div class='col-md-6 col-sm-12 col-xs-12'>
-      <h1>
-        <font class='brand'>ABCS </font>
-        <font class='subbrand mosaico'>MOSAICO</font>
-      </h1>
-      <h2>Segurança e Gestão para Motéis</h2>
-      <p>O ABCS Mosaico é o sistema completo para a gestão de seu motel, simplificando o seu dia-a-dia como gestor. Nele você
-        tem:
-      </p>
-      <table class="table table-hover">
-        <tbody>
-          <tr>
-            <td>
-              <i class="fa fa-eye mosaico" aria-hidden="true"></i>
-            </td>
-            <td>Fácil visualização das suítes alugadas</td>
-          </tr>
-          <tr>
-            <td>
-              <i class="fa fa-calculator mosaico" aria-hidden="true"></i>
-            </td>
-            <td>Cálculo automático de estadia e consumo</td>
-          </tr>
-          <tr>
-            <td>
-              <i class="fa fa-files-o mosaico" aria-hidden="true"></i>
-            </td>
-            <td>Relatórios personalizados para seu motel</td>
-          </tr>
-          <tr>
-            <td>
-              <i class="fa fa-money mosaico" aria-hidden="true"></i>
-            </td>
-            <td>Tabela de preço por dia e horário de check-in</td>
-          </tr>
-          <tr>
-            <td>
-              <i class="fa fa-file mosaico" aria-hidden="true"></i>
-            </td>
-            <td>Emissão de Nota Fiscal Paulista</td>
-          </tr>
-          <tr>
-            <td>
-              <i class="fa fa-clock-o mosaico" aria-hidden="true"></i>
-            </td>
-            <td>Organização de turnos de trabalho</td>
-          </tr>
-          <tr>
-            <td>
-              <i class="fa fa-plug mosaico" aria-hidden="true"></i>
-            </td>
-            <td>Corte de energia em suítes vazias</td>
-          </tr>
-          <tr>
-            <td>
-              <i class="fa fa-external-link-square mosaico" aria-hidden="true"></i>
-            </td>
-            <td>Abertura automática de portões</td>
-          </tr>
-          <tr>
-            <td>
-              <i class="fa fa-wrench mosaico" aria-hidden="true"></i>
-            </td>
-            <td>Suporte Remoto Especializado</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class='col-md-6 col-sm-12 col-xs-12 back-mosaico' style='min-height:150px;'>
-    </div>
-  </div>
+<?php
+// view/page/mosaico.php — Página do sistema ABCS MOSAICO (nav/footer vêm do layoutModel)
+// Usa o mesmo CSS do Premium (css/premium.css, escopo .prm). Só mudam textos, logo e funcionalidades.
+$dot  = isset($dot) ? $dot : '';
+$raiz = dirname(__DIR__, 2);
 
-  <div class='container text-center cta'>
-    <h3 class='black'>Quer o
-      <font class='brand'>ABCS </font>
-      <font class='subbrand mosaico'>MOSAICO</font> em seu Motel?</h3>
-    <button onclick="location.href='../contato/Quero o Mosaico em meu motel'" type="button" class="btn btn-info btn-lg">
-      Clique aqui
-    </button>
-  </div>
-</div>
+$link_demo = $dot . '/contato/' . rawurlencode('Quero o Mosaico em meu motel');
+
+$logo_arquivo = 'img/sistemas/mosaico.png';
+$tem_logo     = file_exists($raiz . '/' . $logo_arquivo);
+
+$funcionalidades = [
+    ['fa-eye', 'Fácil visualização das suítes alugadas', 'Veja rapidamente a situação de cada suíte.'],
+    ['fa-calculator', 'Cálculo automático de estadia e consumo', 'O sistema calcula estadia e consumo para você.'],
+    ['fa-files-o', 'Relatórios personalizados', 'Relatórios personalizados para o seu motel.'],
+    ['fa-money', 'Tabela de preço por dia e horário', 'Defina preços por dia e por horário de check-in.'],
+    ['fa-file-text-o', 'Emissão de Nota Fiscal Paulista', 'Emita a Nota Fiscal Paulista pelo próprio sistema.'],
+    ['fa-clock-o', 'Organização de turnos de trabalho', 'Organize os turnos da sua equipe.'],
+    ['fa-plug', 'Corte de energia em suítes vazias', 'Desligue a energia das suítes desocupadas.'],
+    ['fa-unlock-alt', 'Abertura automática de portões', 'Automatize a abertura dos portões.'],
+    ['fa-headphones', 'Suporte Remoto Especializado', 'Atendimento remoto com uma equipe especializada no sistema.'],
+];
+$grid_cls = (count($funcionalidades) === 4) ? ' prm-grid--2' : '';
+?>
+<main class="prm">
+
+    <!-- HERO -->
+    <section class="prm-hero">
+        <div class="prm-container prm-hero__grid">
+            <div class="prm-hero__texto">
+                <span class="prm-badge">Segurança e Gestão para Motéis</span>
+                <h1>ABCS MOSAICO</h1>
+                <p>O ABCS Mosaico é o sistema completo para a gestão do seu motel, simplificando o seu dia a dia como gestor.</p>
+                <div class="prm-hero__acoes">
+                    <a class="prm-btn" href="<?= htmlspecialchars($link_demo) ?>">Solicitar demonstração</a>
+                </div>
+            </div>
+            <div class="prm-hero__logo">
+                <?php if ($tem_logo): ?>
+                    <img src="<?= $dot . '/' . $logo_arquivo ?>" alt="Logo ABCS MOSAICO">
+                <?php else: ?>
+                    <span class="prm-hero__icone"><i class="fa fa-bed" aria-hidden="true"></i></span>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUNCIONALIDADES -->
+    <section class="prm-func" id="funcionalidades">
+        <div class="prm-container">
+            <h2 class="prm-titulo">Funcionalidades e Benefícios</h2>
+            <div class="prm-grid<?= $grid_cls ?>">
+                <?php foreach ($funcionalidades as $f): ?>
+                    <article class="prm-card">
+                        <span class="prm-card__icone"><i class="fa <?= $f[0] ?>" aria-hidden="true"></i></span>
+                        <h3><?= htmlspecialchars($f[1]) ?></h3>
+                        <p><?= htmlspecialchars($f[2]) ?></p>
+                    </article>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="prm-cta">
+        <div class="prm-container">
+            <div class="prm-cta__box">
+                <h2>Quer o ABCS MOSAICO em seu motel?</h2>
+                <p>Fale com a nossa equipe e solicite uma demonstração do ABCS MOSAICO.</p>
+                <a class="prm-btn" href="<?= htmlspecialchars($link_demo) ?>">Solicitar demonstração</a>
+            </div>
+        </div>
+    </section>
+
+</main>

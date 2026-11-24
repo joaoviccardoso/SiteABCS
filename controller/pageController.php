@@ -54,6 +54,12 @@ class pageController{
     include "view/page/manutencao.php";
     unset($layout);
   }
+  public function restaurante1()
+  {
+    $layout = new layoutModel('restaurante1', 'restaurante, sistema para restaurantes, abcs, sistemas', 'Restaurante : Gestão para Seu Restaurante');
+    include "view/page/restaurante1.php";
+    unset($layout);
+  }
   public function sistemas()
   {
     $layout = new layoutModel('sistemas', 'sistemas para empresas, gerenciador comercial, emissor de nfe, abcs, sistemas', 'Sistemas : Soluções digitais para a gestão do seu negócio');
