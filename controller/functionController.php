@@ -182,6 +182,7 @@ class functionController
             "css/manutencao.css",
             "css/sistemas.css",
             "css/premium.css",
+            "css/ajuda.css",
         );
         $buffer = "";
         foreach ($cssFiles as $cssFile) {

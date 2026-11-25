@@ -1,0 +1,77 @@
+/* ABCS – Central de Ajuda | CSS compartilhado por todas as páginas de ajuda */
+#pagina {
+  --aj-borda: #e5e7eb;
+  --aj-fundo: #ffffff;
+  --aj-fundo-hover: #f8f9fa;
+  --aj-texto: #343a40;
+  --aj-sombra: 0 1px 3px rgba(0, 0, 0, .08);
+  --aj-sombra-hover: 0 6px 18px rgba(0, 0, 0, .12);
+  --aj-raio: 12px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* ---------- Título ---------- */
+#pagina > h1 { margin-bottom: 1.5rem; }
+#pagina > h3 { color: #6c757d; font-weight: 400; margin-bottom: 2rem; }
+
+/* ---------- Página inicial: cartões dos sistemas ---------- */
+.ajuda-grid { display: flex; flex-wrap: wrap; justify-content: center; margin: 0 -10px; }
+.ajuda-card {
+  display: flex; align-items: center; justify-content: center;
+  flex: 0 0 calc(25% - 20px); margin: 10px; padding: 1.5rem 1rem;
+  background: var(--aj-fundo); border: 1px solid var(--aj-borda);
+  border-radius: var(--aj-raio); box-shadow: var(--aj-sombra);
+  text-decoration: none !important;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.ajuda-card:hover, .ajuda-card:focus {
+  transform: translateY(-4px); box-shadow: var(--aj-sombra-hover);
+}
+.ajuda-card h2 { margin: 0; font-size: 1.5rem; }
+@media (max-width: 991px) { .ajuda-card { flex-basis: calc(50% - 20px); } }
+@media (max-width: 575px) { .ajuda-card { flex-basis: 100%; } }
+
+/* ---------- Perguntas frequentes (accordion) ---------- */
+.accordion {
+  position: relative; display: block; width: 100%;
+  padding: 1rem 3rem 1rem 1.25rem; margin-top: .75rem;
+  text-align: left; font-size: 1.05rem; font-weight: 500; color: var(--aj-texto);
+  background: var(--aj-fundo); border: 1px solid var(--aj-borda);
+  border-radius: var(--aj-raio); box-shadow: var(--aj-sombra);
+  cursor: pointer; transition: background .2s ease, box-shadow .2s ease, border-radius .2s ease;
+}
+.accordion:hover { background: var(--aj-fundo-hover); }
+.accordion:focus { outline: 0; box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25); }
+/* Remove qualquer texto ("Mostrar mais"/"Mostrar menos") que o CSS antigo do site coloque no botão */
+#pagina .accordion::before { content: none !important; display: none !important; }
+
+/* Setinha */
+#pagina .accordion::after {
+  content: "" !important;
+  position: absolute; right: 1.25rem; top: 50%; left: auto; float: none;
+  width: .55rem; height: .55rem; margin: -.45rem 0 0 0; padding: 0;
+  font-size: 0; line-height: 0; text-indent: 0; background: none;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: rotate(45deg); transition: transform .25s ease;
+}
+.accordion.active { border-bottom-left-radius: 0; border-bottom-right-radius: 0; box-shadow: none; }
+#pagina .accordion.active::after { content: "" !important; transform: rotate(-135deg); margin-top: -.2rem; }
+
+.panel {
+  max-height: 0; overflow: hidden;
+  background: var(--aj-fundo); border: 0 solid var(--aj-borda);
+  border-radius: 0 0 var(--aj-raio) var(--aj-raio);
+  transition: max-height .3s ease;
+}
+.accordion.active + .panel { border-width: 0 1px 1px 1px; }
+.panel p { margin: 0; padding: 1rem 1.25rem 0; line-height: 1.6; color: var(--aj-texto); }
+.panel p:last-child { padding-bottom: 1.25rem; }
+
+/* ---------- Rodapé "Não achei minha dúvida" ---------- */
+.ajuda-rodape { margin-top: 2.5rem; text-align: center; }
+.ajuda-rodape .btn { padding: .75rem 2rem; border-radius: 50px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ajuda-card, .accordion, .accordion::after, .panel { transition: none; }
+}
