@@ -51,13 +51,13 @@ $sistemas = [
     <!-- HERO -->
     <section class="sis-hero">
         <div class="sis-container sis-hero__grid">
-            <div class="sis-hero__texto">
+            <div class="sis-hero__texto" data-aos="fade-up-right">
                 <span class="sis-badge">Soluções corporativas</span>
                 <h1>Sistemas que facilitam a gestão do seu negócio</h1>
                 <p>Conheça as soluções completas da ABCS para gestão comercial, emissão fiscal, transporte, hotelaria e agronegócio.</p>
                 <a class="sis-btn" href="<?= htmlspecialchars($link_contato) ?>" target="_blank" rel="noopener">Fale conosco</a>
             </div>
-            <div class="sis-hero__img">
+            <div class="sis-hero__img" data-aos="fade-up-left">
                 <img src="<?= $dot . $pastaImg ?>/DashboarddeGestao.png" alt="Notebook exibindo um sistema de gestão">
             </div>
         </div>
@@ -67,7 +67,7 @@ $sistemas = [
     <section class="sis-lista" id="solucoes">
         <div class="sis-container">
             <h2 class="sis-titulo">Nossas Soluções Digitais</h2>
-            <div class="sis-cards">
+            <div class="sis-cards" data-aos="zoom-in-up">
                 <?php foreach ($sistemas as $s):
                     $externo = isset($s['link']);
                     $href    = $externo ? $s['link'] : $dot . '/' . $s['rota'];
@@ -110,7 +110,7 @@ $sistemas = [
 
     <!-- CTA -->
     <section class="sis-cta">
-        <div class="sis-container">
+        <div class="sis-container" data-aos="zoom-in-up">
             <div class="sis-cta__box">
                 <h2>Pronto para transformar sua gestão?</h2>
                 <p>Fale com a nossa equipe e descubra qual sistema é o ideal para o seu negócio.</p>

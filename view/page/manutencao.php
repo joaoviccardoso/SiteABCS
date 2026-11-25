@@ -28,7 +28,7 @@ $servicos = [
 
     <!-- HERO -->
     <section class="mnt-hero" style="background-image:linear-gradient(180deg,rgba(11,23,48,.82),rgba(11,23,48,.92)),url('<?= $dot ?>/img/HeroManutencao.png')">
-        <div class="mnt-container">
+        <div class="mnt-container" data-aos="zoom-in-right">
             <h1>Manutenção de Equipamentos para sua Empresa</h1>
             <p>Cuidamos dos seus computadores e impressoras para evitar problemas e manter tudo funcionando corretamente. Oferecemos suporte rápido e eficiente para que sua empresa não pare e continue produtiva no dia a dia.</p>
             <a class="mnt-btn" href="<?= htmlspecialchars($link_atendimento) ?>" target="_blank" rel="noopener">Solicitar atendimento</a>
@@ -43,7 +43,7 @@ $servicos = [
                 <h2>Manutenção de Computadores</h2>
                 <p class="mnt-lead">Diagnóstico e atendimento rápido do seu hardware, com diagnóstico preciso e intervenções técnicas de alto nível.</p>
 
-                <ul class="mnt-cards">
+                <ul class="mnt-cards" data-aos="zoom-in-right" >
                     <?php foreach ($servicos as $s): ?>
                         <li class="mnt-card">
                             <i class="fa <?= $s['icone'] ?>" aria-hidden="true"></i>
@@ -56,7 +56,7 @@ $servicos = [
                 </ul>
             </div>
 
-            <div class="mnt-servicos__img">
+            <div class="mnt-servicos__img" data-aos="zoom-in-left">
                 <img src="<?= $dot ?>/img/imgManutencao.png" alt="Técnico realizando manutenção em placa de computador" loading="lazy">
             </div>
         </div>
@@ -64,7 +64,7 @@ $servicos = [
 
     <!-- CTA -->
     <section class="mnt-cta">
-        <div class="mnt-container">
+        <div class="mnt-container" data-aos="zoom-in-up">
             <h2>Pronto para elevar sua tecnologia?</h2>
             <p>Não deixe sua empresa parar por falhas técnicas. Tenha ao seu lado a parceria de TI que entende do seu negócio.</p>
             <a class="mnt-btn" href="<?= htmlspecialchars($link_atendimento) ?>" target="_blank" rel="noopener">Solicitar atendimento</a>

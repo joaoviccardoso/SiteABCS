@@ -160,8 +160,8 @@ header('Content-Type: text/html; charset=utf-8');
   <div class="servico__grid">
     <div class="servico__conteudo">
       <p class="servico__eyebrow">Soluções corporativas</p>
-      <h1>Emissão de Boleto OnLine</h1>
-      <p class="servico__texto">Informe o CNPJ ou CPF do titular do cadastro na ABCS Informática e clique no botão "Listar Boletos".</p>
+      <h1 data-aos="zoom-in-right">Emissão de Boleto OnLine</h1>
+      <p class="servico__texto" data-aos="zoom-in-right">Informe o CNPJ ou CPF do titular do cadastro na ABCS Informática e clique no botão "Listar Boletos".</p>
 
       <form class="servico__form" action="index.php" method="POST">
         <input type="hidden" name="op" value="l" />

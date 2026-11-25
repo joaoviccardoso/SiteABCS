@@ -1,17 +1,17 @@
 <section class="sobre-hero" id="sobre">
   <div class="sobre__wrap sobre-hero__grid">
-    <div>
+    <div data-aos="fade-up-right">
       <h1>Sobre a ABCS Informática</h1>
       <p>Há mais de uma década transformando o cenário tecnológico de empresas com soluções precisas, suporte humano e infraestrutura de ponta.</p>
     </div>
-    <div class="sobre-hero__foto">
+    <div class="sobre-hero__foto" data-aos="fade-up-left">
       <img src="/img/EscritórioABCS.png" alt="Escritório moderno com equipamentos de TI" />
     </div>
   </div>
 </section>
 
 <section class="sobre-traj">
-  <div class="sobre__wrap sobre-traj__grid">
+  <div class="sobre__wrap sobre-traj__grid" data-aos="fade-right">
     <div>
       <p class="sobre-traj__eyebrow nossaTrajetoria">Nossa trajetória</p>
       <h2>Uma história de evolução contínua.</h2>
@@ -28,7 +28,7 @@
 </section>
 
 <section class="sobre-cards">
-  <div class="sobre__wrap sobre-cards__grid">
+  <div class="sobre__wrap sobre-cards__grid" data-aos="zoom-in-up">
     <article class="sobre-card">
       <div class="sobre-card__ico" aria-hidden="true">🚀</div>
       <h3>Missão</h3>
