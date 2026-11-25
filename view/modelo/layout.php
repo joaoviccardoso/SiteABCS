@@ -379,9 +379,9 @@
           <div class="col-6 col-md-3 footer-col">
             <h4 class="footer-title">Serviços</h4>
             <ul class="footer-list">
-              <li><a href="<?php echo($dot);?>/#suporte">Suporte Técnico</a></li>
-              <li><a href="<?php echo($dot);?>/#infraestrutura">Infraestrutura</a></li>
-              <li><a href="<?php echo($dot);?>/#consultoria">Consultoria</a></li>
+              <li><a href="<?php echo($dot);?>/contato">Suporte Técnico</a></li>
+              <li><a href="<?php echo($dot);?>/contato">Infraestrutura</a></li>
+              <li><a href="<?php echo($dot);?>/contato">Consultoria</a></li>
             </ul>
           </div>
 
@@ -389,7 +389,7 @@
             <h4 class="footer-title">Links úteis</h4>
             <ul class="footer-list">
               <li><a href="<?php echo($dot);?>/ajuda">Central de ajuda</a></li>
-              <li><a href="<?php echo($dot);?>/teamviewer" target="_blank">Suporte remoto</a></li>
+              <li><a href="https://www.teamviewer.com/pt-br/download/windows/" target="_blank">Suporte remoto</a></li>
               <li><a href="<?php echo($dot);?>/downloads">Downloads</a></li>
             </ul>
           </div>
@@ -397,7 +397,7 @@
           <div class="col-6 col-md-3 footer-col">
             <h4 class="footer-title">Contato</h4>
             <ul class="footer-list">
-              <li><i class="fa fa-map-marker" aria-hidden="true"></i> Endereço da empresa, nº - Bairro</li>
+              <li><i class="fa fa-map-marker" aria-hidden="true"></i> Endereço: R. das Angélicas, 622 - Centro, Conchal - SP, 13835-000</li>
               <li><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:+551938661100">(19) 3866-1100</a></li>
               <li><i class="fa fa-instagram" aria-hidden="true"></i> <a href="https://www.instagram.com/abcsinformatica/" target="_blank" rel="noopener">@abcsinformatica</a></li>
             </ul>
