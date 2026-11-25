@@ -10,7 +10,7 @@
 
   <link rel="icon" type="image/png" href="<?php echo($dot);?>/img/favicon.png" />
   <link rel="preload" as="image" href="<?php echo($dot);?>/img/1LogoABCSInfo.png">
-
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <meta property="og:title" content="ABCS <?php echo($title); ?>">
   <meta property="og:url" content="https://www.abcsinformatica.com.br">
   <meta property="og:image" content="https://www.abcsinformatica.com.br/img/abcs_azul_full.png">
@@ -31,6 +31,16 @@
   <!-- Fonte Montserrat (navbar, hero e footer) -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- AOS (animações ao rolar) - hospedado localmente -->
+  <link rel="stylesheet" href="<?php echo($dot);?>/aos/aos.css">
+
+  <!-- Sem JavaScript, os elementos com data-aos não podem ficar invisíveis -->
+  <noscript>
+    <style>
+      [data-aos] { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+
   <noscript id="deferred-styles">
       <link rel="stylesheet" type="text/css" href="<?php echo($dot);?>/minify "/>
     </noscript>
@@ -47,6 +57,8 @@
         for (var i = 0; i < links.length; i++) {
           links[i].addEventListener('load', function () {
             if (typeof ajustaRodape === 'function') ajustaRodape();
+            // O CSS adiado muda o layout: recalcula as posições do AOS
+            if (window.AOS && AOS.refresh) AOS.refresh();
           });
         }
       };
@@ -160,6 +172,23 @@
       atualizarBarra();
     }
 
+    // Inicia o AOS somente com o conteúdo visível (display: block),
+    // para que as posições dos elementos sejam calculadas corretamente.
+    function iniciarAOS() {
+      if (!window.AOS) return;
+
+      var reduzirMovimento = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      AOS.init({
+        duration: 700,
+        easing: 'ease-out',
+        once: true,      // anima só na primeira vez
+        offset: 80,
+        disable: reduzirMovimento  // respeita quem prefere menos animação
+      });
+    }
+
     function paginaCarregada() {
       var pre = document.getElementById('preloader_3');
       var conteudo = document.getElementById('conteudo');
@@ -183,6 +212,7 @@
 
         ajustaRodape();
         observaRodape();   // CORREÇÃO: mantém o padding sempre sincronizado com o footer
+        iniciarAOS();      // NOVO: inicia as animações de scroll
         pre.classList.add('saindo');
 
         setTimeout(function () {
@@ -420,6 +450,8 @@
   crossorigin="anonymous"></script>
 <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
   crossorigin="anonymous"></script>
+<!-- AOS (animações ao rolar) - hospedado localmente -->
+<script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <!--<script async>
   (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;

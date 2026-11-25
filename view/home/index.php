@@ -2,7 +2,7 @@
     <section id="gradient" class="hero-background hero">
         <div class="container">
             <div class="hero-row">
-                <div class="col-md-7 hero-content">
+                <div class="col-md-7 hero-content" data-aos="fade-up-right">
                     <h1 class="hero-title">Soluções completas em tecnologia para sua empresa</h1>
                     <p class="hero-subtitle">sistemas + suporte + manutenção</p>
 
@@ -12,8 +12,8 @@
                     </div>
                 </div>
 
-                <div class="col-md-5 hero-logo-wrap">
-                    <img class="hero-logo" src="./img/abcs_branco_grande.png" alt="ABCS Informática & Sistemas">
+                <div class="col-md-5 hero-logo-wrap" data-aos="fade-up-left">
+                    <img class="hero-logo" src="./img/1-Logo-ABCS-Info&Sist-Branco.png" alt="ABCS Informática & Sistemas">
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
     <section id="sobre" class="home-sec sec-expertise">
         <div class="container">
             <div class="expertise-grid">
-                <div class="expertise-media">
+                <div class="expertise-media" data-aos="fade-right">
                     <div class="expertise-img" role="img" aria-label="Equipe ABCS atendendo um cliente"></div>
                     <div class="sec-badge">
                         <strong>20+</strong>
@@ -46,7 +46,7 @@
             <h2 class="sec-heading text-center">Nossos Serviços</h2>
             <span class="sec-line"></span>
 
-            <div class="servicos-grid">
+            <div class="servicos-grid" data-aos="zoom-in-up">
                 <article class="servico-card" id="sistemas">
                     <span class="servico-icon"><i class="fa fa-desktop" aria-hidden="true"></i></span>
                     <h3>Sistemas</h3>
@@ -75,7 +75,7 @@
     <section id="porque-abcs" class="home-sec sec-porque">
         <div class="container">
             <div class="porque-grid">
-                <div class="porque-media">
+                <div class="porque-media" data-aos="fade-right">
                     <div class="porque-img" role="img" aria-label="Equipe de tecnologia da ABCS"></div>
                     <div class="sec-badge">
                         <strong>100%</strong>
@@ -115,7 +115,7 @@
 
     <!-- ===================== CTA ===================== -->
     <section class="home-sec sec-cta">
-        <div class="container">
+        <div class="container" data-aos="zoom-in-up">
             <div class="cta-box">
                 <h2>Precisa de soluções em tecnologia?</h2>
                 <p>Nossa equipe está pronta para analisar seu cenário e propor a melhor estratégia para sua evolução digital.</p>
