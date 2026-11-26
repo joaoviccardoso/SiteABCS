@@ -336,6 +336,11 @@
   // rota atual, para marcar o item ativo do menu
   $mensagemWhatsApp = "Olá! Acessei o site da ABCS Informática e gostaria de mais informações sobre os serviços.";
   $linkWhatsApp = "https://wa.me/551938661100?text=" . urlencode($mensagemWhatsApp);
+
+  // links diretos de download do suporte remoto (confira se continuam válidos)
+  $linkTeamViewer = "https://download.teamviewer.com/download/TeamViewerQS.exe";
+  $linkAnyDesk    = "https://download.anydesk.com/AnyDesk.exe";
+
   $atual = explode('?', $_SERVER['REQUEST_URI']);
   $atual = trim($atual[0], '/');
   $partes = explode('/', $atual);
@@ -377,6 +382,29 @@
           </li>
         </ul>
 
+        <!-- suporte remoto no celular (dentro do menu aberto) -->
+        <div class="remoto-mobile d-lg-none">
+          <div class="dropdown dropdown-remoto-wrap">
+            <button class="btn-remoto dropdown-toggle" type="button" id="remotoDropMobile"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-download" aria-hidden="true"></i> Suporte remoto
+            </button>
+            <div class="dropdown-menu dropdown-remoto" aria-labelledby="remotoDropMobile">
+              <h6 class="dropdown-header">Baixar acesso remoto</h6>
+              <a class="dropdown-item" href="<?php echo $linkTeamViewer; ?>" rel="noopener">
+                <span class="item-icone"><i class="fa fa-desktop" aria-hidden="true"></i></span>
+                <span class="item-texto"><strong>TeamViewer</strong><small>QuickSupport (.exe)</small></span>
+                <i class="fa fa-download item-baixar" aria-hidden="true"></i>
+              </a>
+              <a class="dropdown-item" href="<?php echo $linkAnyDesk; ?>" rel="noopener">
+                <span class="item-icone"><i class="fa fa-desktop" aria-hidden="true"></i></span>
+                <span class="item-texto"><strong>AnyDesk</strong><small>Executável (.exe)</small></span>
+                <i class="fa fa-download item-baixar" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
         <!-- botão WhatsApp no celular (dentro do menu aberto) -->
         <a class="btn-whatsapp d-lg-none"
           href="<?php echo $linkWhatsApp; ?>"
@@ -386,15 +414,34 @@
         </a>
       </div>
 
-      <!-- botão WhatsApp no desktop (à direita) -->
-        <div class="nav-cta d-none d-lg-flex">
-            <a class="btn-whatsapp"
-              href="<?php echo $linkWhatsApp; ?>"
-              target="_blank"
-              rel="noopener">
-                <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp
+      <!-- suporte remoto + WhatsApp no desktop (à direita) -->
+      <div class="nav-cta d-none d-lg-flex">
+        <div class="dropdown dropdown-remoto-wrap">
+          <button class="btn-remoto dropdown-toggle" type="button" id="remotoDrop"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-download" aria-hidden="true"></i> Suporte remoto
+          </button>
+          <div class="dropdown-menu dropdown-menu-right dropdown-remoto" aria-labelledby="remotoDrop">
+            <h6 class="dropdown-header">Baixar acesso remoto</h6>
+            <a class="dropdown-item" href="<?php echo $linkTeamViewer; ?>" rel="noopener">
+              <span class="item-icone"><i class="fa fa-desktop" aria-hidden="true"></i></span>
+              <span class="item-texto"><strong>TeamViewer</strong><small>QuickSupport (.exe)</small></span>
+              <i class="fa fa-download item-baixar" aria-hidden="true"></i>
             </a>
+            <a class="dropdown-item" href="<?php echo $linkAnyDesk; ?>" rel="noopener">
+              <span class="item-icone"><i class="fa fa-desktop" aria-hidden="true"></i></span>
+              <span class="item-texto"><strong>AnyDesk</strong><small>Executável (.exe)</small></span>
+              <i class="fa fa-download item-baixar" aria-hidden="true"></i>
+            </a>
+          </div>
         </div>
+
+        <a class="btn-whatsapp"
+          href="<?php echo $linkWhatsApp; ?>"
+          target="_blank"
+          rel="noopener">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp
+        </a>
       </div>
     </nav>
 
@@ -419,7 +466,8 @@
             <h4 class="footer-title">Links úteis</h4>
             <ul class="footer-list">
               <li><a href="<?php echo($dot);?>/ajuda">Central de ajuda</a></li>
-              <li><a href="https://www.teamviewer.com/pt-br/download/windows/" target="_blank">Suporte remoto</a></li>
+              <li><a href="<?php echo $linkTeamViewer; ?>" rel="noopener">Suporte remoto (TeamViewer)</a></li>
+              <li><a href="<?php echo $linkAnyDesk; ?>" rel="noopener">Suporte remoto (AnyDesk)</a></li>
               <li><a href="<?php echo($dot);?>/downloads">Downloads</a></li>
             </ul>
           </div>
