@@ -2,6 +2,8 @@
 RewriteOptions ignoreinherit
 RewriteEngine On
 
+RewriteRule ^teste\.php$ - [L]
+
 RewriteCond %{REQUEST_URI} !^/(img|css|images|js|lib)/
 RewriteRule .* index.php [L]
 
