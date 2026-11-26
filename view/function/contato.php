@@ -13,7 +13,6 @@
     <section class="abcs-card abcs-info" aria-labelledby="abcs-info-title">
       <h2 id="abcs-info-title">Informações de Contato</h2>
       <ul>
-        <!-- TROCAR o número do WhatsApp (DDI+DDD+número, só dígitos) -->
         <li>
           <span class="abcs-ico" aria-hidden="true"><i class="fa fa-whatsapp"></i></span>
           <span><small>WhatsApp</small>
@@ -50,35 +49,77 @@
     <h2 id="abcs-form-title">Envie uma mensagem</h2>
     <p class="abcs-sub">Preencha os campos abaixo e nossa equipe técnica retornará em até 24 horas úteis.</p>
 
-    <!-- Integração original preservada: POST em ./contatoRealizado, mesmos names -->
     <form action="./contatoRealizado" method="post" id="contact_form" novalidate>
       <div class="abcs-row">
         <div class="abcs-field">
           <label for="nome">Nome Completo</label>
-          <input id="nome" name="nome" type="text" placeholder="Seu nome" autocomplete="name" required>
+          <input id="nome" name="nome" type="text" placeholder="Nome Completo" autocomplete="name" required>
           <span class="abcs-err" data-for="nome"></span>
         </div>
         <div class="abcs-field">
-          <label for="email">E-mail Corporativo</label>
-          <input id="email" name="email" type="email" placeholder="nome@empresa.com.br" autocomplete="email" required>
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" placeholder="E-mail" autocomplete="email" required>
           <span class="abcs-err" data-for="email"></span>
+        </div>
+      </div>
+
+      <div class="abcs-row">
+        <div class="abcs-field">
+          <label for="telefone">Telefone</label>
+          <input id="telefone" name="telefone" type="tel" placeholder="(99)91234-5678" autocomplete="tel" required>
+          <span class="abcs-err" data-for="telefone"></span>
+        </div>
+        <div class="abcs-field">
+          <label for="cep">CEP</label>
+          <input id="cep" name="cep" type="text" placeholder="CEP" autocomplete="postal-code" inputmode="numeric" required>
+          <span class="abcs-err" data-for="cep"></span>
+        </div>
+      </div>
+
+      <div class="abcs-field">
+        <label for="endereco">Endereço</label>
+        <input id="endereco" name="endereco" type="text" placeholder="Endereço" autocomplete="street-address" required>
+        <span class="abcs-err" data-for="endereco"></span>
+      </div>
+
+      <div class="abcs-row">
+        <div class="abcs-field">
+          <label for="cidade">Cidade</label>
+          <input id="cidade" name="cidade" type="text" placeholder="Cidade" autocomplete="address-level2" required>
+          <span class="abcs-err" data-for="cidade"></span>
+        </div>
+        <div class="abcs-field">
+          <label for="estado">Estado</label>
+          <select id="estado" name="estado" autocomplete="address-level1" required>
+            <option value="">Selecione seu estado</option>
+            <option value="AC">Acre</option><option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option><option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option><option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option><option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option><option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option><option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option><option value="PA">Pará</option>
+            <option value="PB">Paraíba</option><option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option><option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option><option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option><option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option><option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option><option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+          </select>
+          <span class="abcs-err" data-for="estado"></span>
         </div>
       </div>
 
       <div class="abcs-field">
         <label for="assunto">Assunto</label>
-        <select id="assunto" name="assunto" required>
-          <option>Consultoria em TI</option>
-          <option>Suporte Técnico</option>
-          <option>Infraestrutura</option>
-          <option>Sistemas</option>
-          <option>Outros</option>
-        </select>
+        <input id="assunto" name="assunto" type="text" placeholder="Assunto" <?php echo $this->assunto(); ?> required>
+        <span class="abcs-err" data-for="assunto"></span>
       </div>
 
       <div class="abcs-field">
         <label for="mensagem">Mensagem</label>
-        <textarea id="mensagem" name="mensagem" rows="6" placeholder="Como podemos ajudar o seu negócio hoje?" required></textarea>
+        <textarea id="mensagem" name="mensagem" rows="6" placeholder="Mensagem" required></textarea>
         <span class="abcs-err" data-for="mensagem"></span>
       </div>
 
@@ -86,7 +127,7 @@
 
       <button type="submit" class="abcs-btn" id="abcs-submit">
         <i class="fa fa-paper-plane" aria-hidden="true"></i>
-        <span>Enviar Mensagem Técnica</span>
+        <span>Enviar</span>
       </button>
     </form>
   </section>
@@ -112,16 +153,20 @@
 
   function check(input) {
     var v = input.value.trim();
+    var digits = v.replace(/\D/g, '');
     var msg = '';
     if (!v) msg = 'Campo obrigatório.';
     else if (input.name === 'email' && !emailRe.test(v)) msg = 'Informe um e-mail válido.';
     else if (input.name === 'nome' && v.length < 3) msg = 'Informe seu nome completo.';
+    else if (input.name === 'telefone' && (digits.length < 10 || digits.length > 11)) msg = 'Informe um telefone com DDD.';
+    else if (input.name === 'cep' && digits.length !== 8) msg = 'Informe um CEP com 8 dígitos.';
     else if (input.name === 'mensagem' && v.length < 10) msg = 'Descreva um pouco mais sua necessidade.';
     setError(input, msg);
     return !msg;
   }
 
-  var fields = ['nome', 'email', 'mensagem'].map(function (n) { return form.elements[n]; });
+  var fields = ['nome', 'email', 'telefone', 'cep', 'endereco', 'cidade', 'estado', 'assunto', 'mensagem']
+    .map(function (n) { return form.elements[n]; });
 
   fields.forEach(function (f) {
     f.addEventListener('blur', function () { check(f); });
@@ -146,7 +191,6 @@
     btn.querySelector('span').textContent = 'Enviando...';
     status.className = 'abcs-status';
     status.textContent = '';
-    // segue o POST nativo; o retorno (sucesso/erro) é exibido pela página ./contatoRealizado
   });
 
   // Se o usuário voltar pelo histórico, libera o botão novamente
@@ -154,9 +198,8 @@
     if (ev.persisted) {
       sending = false;
       btn.disabled = false;
-      btn.querySelector('span').textContent = 'Enviar Mensagem Técnica';
+      btn.querySelector('span').textContent = 'Enviar';
     }
   });
 })();
 </script>
-

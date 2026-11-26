@@ -17,23 +17,23 @@ class functionController
                 'Content-Type: application/json',
             );
 
-        if ((strcasecmp($_SERVER['REMOTE_ADDR'], '186.233.20.174') == 0) ) {
+            if ((strcasecmp($_SERVER['REMOTE_ADDR'], '186.233.20.174') == 0)) {
 
-            $url = 'http://192.168.10.89/abcs/licenca?Auth=7N2lHfcIq1eEkkIzThnLuTNDOZtlLho2eHTPWsxvUD5o48zzl3kTxfomVO1q1Yj3a6QG7eQHNXmdmyi3TSktkLiBau0OPMjkJjr1adXo9044CQH2PnI56T37Q1xNnGp1&Serial=' . $serial;
+                $url = 'http://192.168.10.89/abcs/licenca?Auth=7N2lHfcIq1eEkkIzThnLuTNDOZtlLho2eHTPWsxvUD5o48zzl3kTxfomVO1q1Yj3a6QG7eQHNXmdmyi3TSktkLiBau0OPMjkJjr1adXo9044CQH2PnI56T37Q1xNnGp1&Serial=' . $serial;
 
-            $req = 'http://192.168.10.89';
+                $req = 'http://192.168.10.89';
 
-        } else {
+            } else {
 
-            $url = 'http://186.233.20.174/abcs/licenca?Auth=7N2lHfcIq1eEkkIzThnLuTNDOZtlLho2eHTPWsxvUD5o48zzl3kTxfomVO1q1Yj3a6QG7eQHNXmdmyi3TSktkLiBau0OPMjkJjr1adXo9044CQH2PnI56T37Q1xNnGp1&Serial=' . $serial;
+                $url = 'http://186.233.20.174/abcs/licenca?Auth=7N2lHfcIq1eEkkIzThnLuTNDOZtlLho2eHTPWsxvUD5o48zzl3kTxfomVO1q1Yj3a6QG7eQHNXmdmyi3TSktkLiBau0OPMjkJjr1adXo9044CQH2PnI56T37Q1xNnGp1&Serial=' . $serial;
 
-            $req = 'http://186.233.20.174';
+                $req = 'http://186.233.20.174';
 
-        }
+            }
 
-        $Comunicacao = new Comunicacao;
+            $Comunicacao = new Comunicacao;
 
-        $resposta = $Comunicacao->enviaConteudoParaAPI($cabecalho, '', $url,'GET');
+            $resposta = $Comunicacao->enviaConteudoParaAPI($cabecalho, '', $url, 'GET');
 
             $obj = json_decode($resposta);
         }
@@ -45,7 +45,7 @@ class functionController
     public function boleto($boleto)
     {
 
-        if (isset($boleto) && ($boleto != '')) { 
+        if (isset($boleto) && ($boleto != '')) {
             include "view/boleto/boleto.php";
         } else {
             $layout = new layoutModel('boleto', 'boleto, abcs, sistemas, sistemas para empresas', '| Emissão de boleto');
@@ -68,31 +68,51 @@ class functionController
     }
     public function contatoRealizado()
     {
-        if ($_POST) {
-            $remetente = $_POST["email"];
-            $nome_remetente = $_POST["nome"];
-            $assunto = $_POST["assunto"];
-            $telefone = $_POST["telefone"];
-            $endereco = $_POST["endereco"];
-            $cidade = $_POST["cidade"];
-            $estado = $_POST["estado"];
-            $cep = $_POST["cep"];
-            $mensagem = $_POST["mensagem"];
+        if (!$_POST) {
+            $this->erroNoEnvio();
+            return;
+        }
 
-            $texto = '';
-            $texto .= "<p>" . $mensagem . "</p>";
-            $texto .= "<h4>" . $nome_remetente . "</h4>";
-            $texto .= "<p>Telefone:" . $telefone . "</p>";
-            $texto .= "<p>Email:" . $remetente . "</p>";
-            $texto .= "<p>Endereço:" . $endereco . "-" . $cidade . "-" . $estado . "-" . $cep . "</p>";
+        $remetente      = trim($_POST['email'] ?? '');
+        $nome_remetente = trim($_POST['nome'] ?? '');
+        $assunto        = trim($_POST['assunto'] ?? '');
+        $telefone       = trim($_POST['telefone'] ?? '');
+        $endereco       = trim($_POST['endereco'] ?? '');
+        $cidade         = trim($_POST['cidade'] ?? '');
+        $estado         = trim($_POST['estado'] ?? '');
+        $cep            = trim($_POST['cep'] ?? '');
+        $mensagem       = trim($_POST['mensagem'] ?? '');
 
-            $email = new emailModel("suporte@abcsinformatica.com.br", "Suporte", 'Contato via site | ' . $assunto, $texto, $remetente, $nome_remetente);
+        // Validação no servidor
+        if (
+            !filter_var($remetente, FILTER_VALIDATE_EMAIL) ||
+            mb_strlen($nome_remetente) < 3 ||
+            $assunto === '' ||
+            mb_strlen($mensagem) < 10
+        ) {
+            $this->erroNoEnvio();
+            return;
+        }
 
-            if ($email == true) {
-                $this->envioOK();
-            } else {
-                $this->erroNoEnvio();
-            }
+        $e = function ($v) { return htmlspecialchars($v, ENT_QUOTES, 'UTF-8'); };
+
+        $texto  = '<p>' . nl2br($e($mensagem)) . '</p>';
+        $texto .= '<h4>' . $e($nome_remetente) . '</h4>';
+        $texto .= '<p>Telefone: ' . $e($telefone) . '</p>';
+        $texto .= '<p>Email: ' . $e($remetente) . '</p>';
+        $texto .= '<p>Endereço: ' . $e($endereco) . ' - ' . $e($cidade) . ' - ' . $e($estado) . ' - ' . $e($cep) . '</p>';
+
+        $email = new emailModel(
+            "suporte@abcsinformatica.com.br",
+            "Suporte",
+            'Contato via site | ' . $assunto,
+            $texto,
+            $remetente,
+            $nome_remetente
+        );
+
+        if ($email->enviado) {
+            $this->envioOK();
         } else {
             $this->erroNoEnvio();
         }
@@ -121,7 +141,7 @@ class functionController
     {
         $pagina = explode('/', $_SERVER['REQUEST_URI']);
         if (isset($pagina[2])) {
-            return 'value = "' . urldecode($pagina[2]) . '"';
+            return 'value="' . htmlspecialchars(urldecode($pagina[2]), ENT_QUOTES, 'UTF-8') . '"';
         } else {
             return '';
         }
@@ -209,34 +229,34 @@ class functionController
             $ret .= '</table>';
         } else {
             switch ($obj->{'RETORNO'}) {
-            case 1:
-                $ret .= '<table class=\'table table-striped\'>';
-                $ret .= '<tr><td>Senha</td><td>' . $obj->{'SENHA'} . '</td></tr>';
-                $ret .= '<tr><td>Status</td><td>Autorizado</td></tr>';
-                $ret .= '<tr><td>Cliente</td><td>' . $obj->{'CODCLIENTE'} . ' - ' . $obj->{'NOMECLIENTE'} . '</td></tr>';
-                $ret .= '</table>';
-                break;
-            case 2:
-                $ret .= '<table class=\'table table-striped\'><tr><td>Status</td><td>Serial não informado</td></tr></table>';
-                break;
-            case 3:
-                $ret .= '<table class=\'table table-striped\'><tr><td>Status</td><td>Licença Inválida</td></tr></table>';
-                break;
-            case 4:
-                $ret .= '<table class=\'table table-striped\'><tr><td>Status</td><td>Licença Bloqueada. Entre em contato com o suporte da ABCS Informática - (19) 3866-1100.</td></tr></table>';
-                break;
-            case 5:
-                $ret .= '<table class=\'table table-striped\'><tr><td>Status</td><td>Serial Inválido</td></tr></table>';
-                break;
-            case 6:
-                $ret .= '<table class=\'table table-striped\'><tr><td>Status</td><td>Conta em aberto. Entre em contato com o setor finaceiro da ABCS Informática - (19) 3866-1100.</td></tr></table>';
-                break;
-            default:
-                $ret .= '<table class=\'table table-striped\'><tr><td>Status</td><td>Retorno desconhecido. Entre em contato com o suporte da ABCS Informática - (19) 3866-1100.</td></tr></table>';
-                break;
+                case 1:
+                    $ret .= '<table class=\'table table-striped\'>';
+                    $ret .= '<tr><td>Senha</td><td>' . $obj->{'SENHA'} . '</td></tr>';
+                    $ret .= '<tr><td>Status</td><td>Autorizado</td></tr>';
+                    $ret .= '<tr><td>Cliente</td><td>' . $obj->{'CODCLIENTE'} . ' - ' . $obj->{'NOMECLIENTE'} . '</td></tr>';
+                    $ret .= '</table>';
+                    break;
+                case 2:
+                    $ret .= '<table class=\'table table-striped\'><tr><td>Status</td><td>Serial não informado</td></tr></table>';
+                    break;
+                case 3:
+                    $ret .= '<table class=\'table table-striped\'><tr><td>Status</td><td>Licença Inválida</td></tr></table>';
+                    break;
+                case 4:
+                    $ret .= '<table class=\'table table-striped\'><tr><td>Status</td><td>Licença Bloqueada. Entre em contato com o suporte da ABCS Informática - (19) 3866-1100.</td></tr></table>';
+                    break;
+                case 5:
+                    $ret .= '<table class=\'table table-striped\'><tr><td>Status</td><td>Serial Inválido</td></tr></table>';
+                    break;
+                case 6:
+                    $ret .= '<table class=\'table table-striped\'><tr><td>Status</td><td>Conta em aberto. Entre em contato com o setor finaceiro da ABCS Informática - (19) 3866-1100.</td></tr></table>';
+                    break;
+                default:
+                    $ret .= '<table class=\'table table-striped\'><tr><td>Status</td><td>Retorno desconhecido. Entre em contato com o suporte da ABCS Informática - (19) 3866-1100.</td></tr></table>';
+                    break;
             }
         }
-    
+
         return $ret;
     }
 
