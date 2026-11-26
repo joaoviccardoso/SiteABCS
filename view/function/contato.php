@@ -31,11 +31,11 @@
       </ul>
     </section>
 
-    <div class="abcs-visual">
+    <div class="abcs-visual" id="abcs-map" data-src="https://www.google.com/maps?q=R.+das+Ang%C3%A9licas,+622+-+Centro,+Conchal+-+SP&amp;z=16&amp;output=embed">
       <iframe
         title="Localização da ABCS Informática no Google Maps"
-        src="https://www.google.com/maps?q=R.+das+Ang%C3%A9licas,+622+-+Centro,+Conchal+-+SP&amp;output=embed"
-        loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        src="https://www.google.com/maps?q=R.+das+Ang%C3%A9licas,+622+-+Centro,+Conchal+-+SP&amp;z=16&amp;output=embed"
+        referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       <a class="abcs-loc" target="_blank" rel="noopener"
          href="https://www.google.com/maps/search/?api=1&amp;query=R.+das+Ang%C3%A9licas,+622+-+Centro,+Conchal+-+SP">
         <small><i class="fa fa-map-marker" aria-hidden="true"></i> Localização</small>
@@ -201,5 +201,30 @@
       btn.querySelector('span').textContent = 'Enviar';
     }
   });
+})();
+</script>
+
+<script>
+/* Mapa: o iframe tem tamanho interno fixo (560x420) e é escalado para cobrir o card, centralizado.
+   Assim o Google Maps nunca depende da largura do container no momento do carregamento. */
+(function () {
+  var box = document.getElementById('abcs-map');
+  if (!box) return;
+
+  var W = 560, H = 420;   // tamanho "virtual" do mapa
+
+  function fit() {
+    var cw = box.clientWidth, ch = box.clientHeight;
+    if (!cw || !ch) return;
+    var s = Math.max(cw / W, ch / H);   // "cover": preenche tudo, cortando o excesso nas bordas
+    box.style.setProperty('--map-w', W + 'px');
+    box.style.setProperty('--map-h', H + 'px');
+    box.style.setProperty('--map-s', s.toFixed(4));
+  }
+
+  fit();
+  if ('ResizeObserver' in window) new ResizeObserver(fit).observe(box);
+  else window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
 })();
 </script>

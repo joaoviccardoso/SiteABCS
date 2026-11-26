@@ -12,14 +12,15 @@
   --abcs-hero-img: url("img/HeroContato.png");
 }
 
-.abcs-wrap { 
-    display: flex;
-    flex-direction: row;
-    padding: 0 3rem; 
-}
-
-.abcs-wrap-hero { 
-    padding: 0 3rem; 
+/* Containers (laterais fluidas: 16px no celular, até 48px no desktop) */
+.abcs-wrap,
+.abcs-wrap-hero {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-left: clamp(16px, 4vw, 48px);
+  padding-right: clamp(16px, 4vw, 48px);
 }
 
 /* Hero */
@@ -40,7 +41,7 @@
 /* Grid principal */
 .abcs-grid {
   display: grid;
-  grid-template-columns: minmax(280px, 5fr) 7fr;
+  grid-template-columns: minmax(280px, 5fr) minmax(0, 7fr);
   gap: 24px;
   margin-top: -36px;
   padding-bottom: 56px;
@@ -48,13 +49,19 @@
   align-items: start;
   color: var(--abcs-text);
 }
-.abcs-col { display: grid; gap: 24px; }
+.abcs-col {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  min-width: 0;
+}
 
 .abcs-card {
   background: #fff;
   border-radius: 14px;
   padding: 28px;
   box-shadow: 0 6px 24px rgba(14,26,51,.08);
+  min-width: 0;
 }
 .abcs-card h2 { font-size: 1.2rem; font-weight: 700; margin: 0 0 20px; }
 
@@ -73,13 +80,30 @@
 /* Card do mapa */
 .abcs-visual {
   position: relative;
+  width: 100%;
   min-height: 320px;
   border-radius: 14px;
   background: #dfe7f2;
   overflow: hidden;
   box-shadow: 0 6px 24px rgba(14,26,51,.08);
 }
-.abcs-visual iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+/* Iframe com tamanho interno fixo (definido via JS: --map-w / --map-h) e escalado
+   (--map-s) para cobrir o card, sempre centralizado no pino. Não depende do tamanho do container. */
+.abcs-visual iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--map-w, 560px) !important;
+  height: var(--map-h, 420px) !important;
+  min-width: 0;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0;
+  display: block;
+  transform: translate(-50%, -50%) scale(var(--map-s, 1));
+  transform-origin: center center;
+}
 .abcs-loc {
   position: absolute; left: 16px; bottom: 16px; max-width: calc(100% - 32px);
   background: #fff; border-radius: 8px; padding: 10px 14px;
@@ -94,7 +118,7 @@
 /* Formulário */
 .abcs-sub { color: var(--abcs-muted); margin: -10px 0 24px; font-size: .92rem; line-height: 1.5; }
 .abcs-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.abcs-field { margin-bottom: 18px; }
+.abcs-field { margin-bottom: 18px; min-width: 0; }
 .abcs-field label { display: block; font-size: .82rem; font-weight: 700; margin-bottom: 6px; }
 .abcs-field input, .abcs-field select, .abcs-field textarea {
   width: 100%; box-sizing: border-box;
@@ -138,7 +162,7 @@
 
 /* Tablet */
 @media (max-width: 991px) {
-  .abcs-grid { grid-template-columns: 1fr 1.3fr; gap: 18px; }
+  .abcs-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 18px; }
   .abcs-card { padding: 22px; }
   .abcs-row { grid-template-columns: 1fr; gap: 0; }
 }
@@ -146,8 +170,32 @@
 /* Mobile: informações primeiro, depois formulário */
 @media (max-width: 767px) {
   .abcs-hero { min-height: 190px; padding: 36px 0; }
-  .abcs-grid { grid-template-columns: 1fr; margin-top: -24px; }
-  .abcs-col { order: 1; }
+
+  .abcs-wrap,
+  .abcs-wrap-hero {
+    padding-left: 12px;   /* containers mais largos */
+    padding-right: 12px;
+  }
+
+  .abcs-grid {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: -24px;
+    gap: 16px;
+    padding-bottom: 40px;
+  }
+  .abcs-col { order: 1; gap: 16px; }
   .abcs-form-card { order: 2; }
-  .abcs-visual { min-height: 260px; }
+
+  .abcs-card { padding: 20px 18px; border-radius: 12px; }
+  .abcs-card h2 { font-size: 1.1rem; margin-bottom: 16px; }
+
+  .abcs-info a { font-size: .95rem; }
+
+  .abcs-visual { min-height: 300px; border-radius: 12px; }
+  .abcs-loc { left: 10px; right: 10px; bottom: 10px; max-width: none; }
+
+  .abcs-row { gap: 0; }
+  .abcs-field input,
+  .abcs-field select,
+  .abcs-field textarea { font-size: 16px; } /* evita zoom automático no iOS */
 }
