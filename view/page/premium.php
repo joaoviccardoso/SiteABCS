@@ -33,7 +33,6 @@ $funcionalidades = [
                 <p>O ABCS PREMIUM é o gerenciador comercial ideal para pequenas e médias empresas que buscam excelência operacional. Uma plataforma robusta, intuitiva e completa para transformar a gestão do seu negócio.</p>
                 <div class="prm-hero__acoes">
                     <a class="prm-btn" href="<?= htmlspecialchars($link_demo) ?>">Solicitar demonstração</a>
-                    <a class="prm-btn prm-btn--contorno" href="<?= htmlspecialchars($link_planos) ?>">Ver planos</a>
                 </div>
                 <?php if ($empresas !== ''): ?>
                     <p class="prm-prova"><i class="fa fa-check-circle" aria-hidden="true"></i> <strong><?= htmlspecialchars($empresas) ?> empresas</strong> confiam no ABCS</p>
